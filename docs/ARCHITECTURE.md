@@ -1,12 +1,51 @@
-# System Architecture & Contracts — tapp
+﻿# System Architecture & Contracts ?" tapp
 
 ## Overview
 **tapp** is a product discovery and community showcase platform designed for public browsing, user submissions, and administrative curation.
 
+## Repository Structure (Client & Server)
+The repository is structured with explicit separation of frontend (client) and backend (server) domains:
+
+```
+tapp/
+├── client/                     # Next.js frontend application (App Router)
+│   ├── app/                    # Routes and pages (/, /products/[id], /submit-product, etc.)
+│   ├── components/             # Reusable UI components (Navbar, Footer, ProductCard)
+│   ├── lib/                    # Client Firebase SDK initialization (firebase.js)
+│   ├── public/                 # Static assets, icons, and logos
+│   ├── .env.local.example      # Client-side environment variable specifications
+│   ├── jsconfig.json           # Path mappings and compiler options
+│   ├── next.config.mjs         # Next.js build configuration
+│   ├── package.json            # Client dependencies (Next.js, React, Lucide, Tailwind)
+│   └── postcss.config.mjs      # Tailwind CSS PostCSS plugin configuration
+├── server/                     # Backend services, admin tooling, and automation
+│   ├── src/
+│   │   ├── firebaseAdmin.js    # Firebase Admin SDK privileged client
+│   │   ├── seed.js             # Database seeding utility for starter products
+│   │   └── index.js            # Server entry point
+│   ├── .env.example            # Backend / Service Account environment specification
+│   └── package.json            # Server dependencies (firebase-admin, dotenv)
+├── docs/                       # Shared architecture, contracts, and roadmaps
+│   ├── ARCHITECTURE.md         # System design and route matrix
+│   ├── CLIENT_INTAKE.md        # Client branding and questionnaire
+│   ├── DATA_MODEL.md           # Firestore schemas and contracts
+│   └── PLAYBOOK_ROADMAP.md     # 10-day execution milestone tracker
+├── package.json                # Root monorepo scripts orchestrator
+└── .gitignore                  # Unified repository gitignore
+```
+
+## Running the Application
+From the repository root:
+- `npm run dev`: Starts the Next.js client development server.
+- `npm run build`: Builds the production bundle for the client.
+- `npm run lint`: Runs ESLint across client files.
+- `npm run seed`: Runs the server database seeding utility.
+
 ## Tech Stack
-- **Framework**: Next.js 15+ (App Router)
-- **Styling**: Tailwind CSS
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS v4
 - **Backend & Database**: Firebase (Authentication, Cloud Firestore, Cloud Storage)
+- **Privileged Backend Operations**: Firebase Admin SDK
 - **Icons**: Lucide React
 - **Deployment Target**: Vercel
 

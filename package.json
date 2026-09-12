@@ -1,24 +1,17 @@
-{
-  "name": "tapp",
+﻿{
+  "name": "tapp-monorepo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "npm --prefix client run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix client run start",
+    "lint": "npm --prefix client run lint",
+    "seed": "npm --prefix server run seed"
   },
-  "dependencies": {
-    "firebase": "^12.19.0",
-    "lucide-react": "^1.45.0",
-    "next": "16.3.5",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "16.3.5",
-    "tailwindcss": "^4"
-  }
+  "workspaces": [
+    "client",
+    "server"
+  ]
 }
