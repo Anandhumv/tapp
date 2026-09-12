@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import {
   Sparkles,
   ArrowRight,
@@ -46,16 +46,16 @@ export default function Home() {
         </div>
 
         {/* Hero Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6">
-          Discover the Future of Products,{" "}
-          <span className="bg-gradient-to-r from-indigo-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent">
-            Built by Innovators.
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.15] mb-6">
+          You build the vision.{" "}
+          <span className="block sm:inline bg-gradient-to-r from-indigo-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent">
+            We manage the tech.
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10">
-          The open showcase and discovery catalog for next-generation clean tech, hardware engineering, AI models, and software craft.
+        <p className="text-base sm:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-10 font-normal">
+          You bring the idea. We bring the technology to life. From design to development and deployment, we handle the technical work so you can focus on what matters most—your vision.
         </p>
 
         {/* Action Buttons */}
