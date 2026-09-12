@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090b10;
-  --foreground: #f4ede4;
-  --champagne: #dfcfbd;
-  --champagne-muted: #a89a8c;
-  --accent-gold: #c9a978;
+  --background: #fbf9f5;
+  --foreground: #1c1917;
+  --muted: #716a63;
+  --champagne: #c9a978;
+  --pill-bg: rgba(255, 255, 255, 0.75);
+  --pill-border: rgba(0, 0, 0, 0.08);
 }
 
 @theme inline {
@@ -14,7 +15,6 @@
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
@@ -24,65 +24,83 @@ body {
   overflow-x: hidden;
 }
 
-/* Luxury Watermark Typography */
+/* Luxury Architectural Watermark Typography on Faded Off-White */
 .watermark-text {
   font-family: var(--font-geist-sans), sans-serif;
   letter-spacing: 0.18em;
-  background: linear-gradient(180deg, rgba(235, 222, 207, 0.45) 0%, rgba(200, 180, 160, 0.12) 100%);
+  background: linear-gradient(180deg, rgba(28, 25, 23, 0.09) 0%, rgba(28, 25, 23, 0.02) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 80px rgba(201, 169, 120, 0.08);
 }
 
-/* Floating Glass Pill */
+/* Floating Glass Pill for Faded Off-White */
 .glass-pill {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* Background Animated Glows */
+/* Card Surfaces */
+.luxury-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Background Animated Light Glows for Off-White */
 @keyframes ambientDrift {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.35;
+    opacity: 0.45;
   }
   50% {
-    transform: translate(-30px, 20px) scale(1.15);
-    opacity: 0.55;
+    transform: translate(-25px, 20px) scale(1.15);
+    opacity: 0.7;
   }
 }
 
 @keyframes pulseGlow {
   0%, 100% {
-    opacity: 0.25;
-    transform: scale(0.95);
+    opacity: 0.3;
+    transform: scale(0.98);
   }
   50% {
-    opacity: 0.45;
-    transform: scale(1.05);
+    opacity: 0.6;
+    transform: scale(1.04);
   }
 }
 
 .animate-ambient-1 {
-  animation: ambientDrift 14s ease-in-out infinite;
+  animation: ambientDrift 16s ease-in-out infinite;
 }
 
 .animate-ambient-2 {
-  animation: ambientDrift 18s ease-in-out infinite reverse;
+  animation: ambientDrift 20s ease-in-out infinite reverse;
 }
 
 .animate-pulse-slow {
-  animation: pulseGlow 10s ease-in-out infinite;
+  animation: pulseGlow 12s ease-in-out infinite;
 }
 
-/* Horizontal Card Hover */
-.preview-card {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* Custom Scrollbar for Off-White */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
-.preview-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 120, 0.2);
+
+::-webkit-scrollbar-track {
+  background: #fbf9f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6cfc7;
+  border-radius: 9999px;
+  border: 2px solid #fbf9f5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8aea3;
 }

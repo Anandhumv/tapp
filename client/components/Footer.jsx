@@ -1,30 +1,30 @@
-﻿import Link from "next/link";
-import { Sparkles, Heart, Globe, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, Heart, Globe } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-zinc-800/80 bg-zinc-950/60 backdrop-blur-sm text-zinc-400 text-sm">
+    <footer className="w-full border-t border-black/8 bg-[#f4f0e8]/80 backdrop-blur-sm text-[#716a63] text-sm">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Col */}
           <div className="md:col-span-1 space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-600 to-cyan-400 text-white">
-                <Sparkles className="h-4 w-4" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#1c1917] text-[#c9a978]">
+                <Sparkles className="h-4 w-4 fill-current" />
               </div>
-              <span className="text-lg font-bold tracking-tight text-white">
-                tapp<span className="text-indigo-400">.</span>
+              <span className="text-lg font-bold tracking-tight text-[#1c1917]">
+                tapp<span className="text-[#c9a978]">.</span>
               </span>
             </Link>
-            <p className="text-xs leading-relaxed text-zinc-400">
+            <p className="text-xs leading-relaxed text-[#716a63]">
               The community showcase and discovery platform for next-generation hardware, CleanTech innovations, and software craft.
             </p>
-            <div className="flex items-center gap-3 text-zinc-400">
+            <div className="flex items-center gap-3 text-[#716a63]">
               <a
                 href="https://github.com/Anandhumv/tapp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-[#1c1917] transition-colors"
                 aria-label="GitHub"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-[#1c1917] transition-colors"
                 aria-label="X / Twitter"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://tapp.local"
-                className="hover:text-white transition-colors"
+                className="hover:text-[#1c1917] transition-colors"
                 aria-label="Website"
               >
                 <Globe className="h-4 w-4" />
@@ -54,27 +54,27 @@ export default function Footer() {
 
           {/* Categories Col */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-200 mb-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1c1917] mb-3">
               Categories
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/?category=CleanTech" className="hover:text-white transition-colors">
+                <Link href="/?category=CleanTech" className="hover:text-[#1c1917] transition-colors">
                   CleanTech
                 </Link>
               </li>
               <li>
-                <Link href="/?category=Hardware" className="hover:text-white transition-colors">
+                <Link href="/?category=Hardware" className="hover:text-[#1c1917] transition-colors">
                   Hardware & Robotics
                 </Link>
               </li>
               <li>
-                <Link href="/?category=SaaS" className="hover:text-white transition-colors">
+                <Link href="/?category=SaaS" className="hover:text-[#1c1917] transition-colors">
                   SaaS & Productivity
                 </Link>
               </li>
               <li>
-                <Link href="/?category=AI" className="hover:text-white transition-colors">
+                <Link href="/?category=AI" className="hover:text-[#1c1917] transition-colors">
                   Artificial Intelligence
                 </Link>
               </li>
@@ -83,27 +83,27 @@ export default function Footer() {
 
           {/* Platform Col */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-200 mb-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1c1917] mb-3">
               Platform
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link href="/" className="hover:text-[#1c1917] transition-colors">
                   Browse Catalog
                 </Link>
               </li>
               <li>
-                <Link href="/submit-product" className="hover:text-white transition-colors">
+                <Link href="/submit-product" className="hover:text-[#1c1917] transition-colors">
                   Submit a Product
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="hover:text-white transition-colors">
+                <Link href="/admin" className="hover:text-[#1c1917] transition-colors">
                   Admin Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/login" className="hover:text-white transition-colors">
+                <Link href="/login" className="hover:text-[#1c1917] transition-colors">
                   Sign In
                 </Link>
               </li>
@@ -112,18 +112,18 @@ export default function Footer() {
 
           {/* Status & Tech Col */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-200 mb-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1c1917] mb-3">
               Infrastructure
             </h4>
             <div className="space-y-3 text-xs">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-emerald-400">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-600/20 bg-emerald-600/10 px-3 py-1 text-emerald-800">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-600 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-700"></span>
                 </span>
                 <span className="font-medium">All systems operational</span>
               </div>
-              <p className="text-zinc-500 text-[11px] leading-relaxed">
+              <p className="text-[#8c827a] text-[11px] leading-relaxed">
                 Powered by Next.js 16 App Router, Tailwind CSS, and Firebase Cloud Infrastructure.
               </p>
             </div>
@@ -131,17 +131,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between border-t border-zinc-800/80 pt-6 text-xs text-zinc-500 gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between border-t border-black/8 pt-6 text-xs text-[#8c827a] gap-4">
           <p>© {new Date().getFullYear()} tapp. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-zinc-400 transition-colors">
+            <Link href="/privacy" className="hover:text-[#1c1917] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-zinc-400 transition-colors">
+            <Link href="/terms" className="hover:text-[#1c1917] transition-colors">
               Terms of Service
             </Link>
             <span className="flex items-center gap-1">
-              Crafted with <Heart className="h-3 w-3 text-rose-500 fill-rose-500" /> for creators
+              Crafted with <Heart className="h-3 w-3 text-rose-600 fill-rose-600" /> for creators
             </span>
           </div>
         </div>
