@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   Sparkles,
   ArrowRight,
+  ArrowUpRight,
   Plus,
   Compass,
   Cpu,
@@ -15,8 +17,39 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+  const showcaseProducts = [
+    {
+      id: "solarflow",
+      name: "SolarFlow 800",
+      category: "CleanTech",
+      tagline: "High-efficiency balcony solar microinverter",
+      imageUrl: "https://images.unsplash.com/photo-1509391365360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+    },
+    {
+      id: "aeropulse",
+      name: "AeroPulse LiDAR",
+      category: "Hardware",
+      tagline: "Autonomous aerial sensor payload",
+      imageUrl: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&auto=format&fit=crop&q=80",
+    },
+    {
+      id: "hypersync",
+      name: "HyperSync Studio",
+      category: "SaaS",
+      tagline: "CRDT-based collaborative workspace",
+      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+    },
+    {
+      id: "neurotrace",
+      name: "NeuroTrace Vision",
+      category: "AI",
+      tagline: "Edge neural inference for robotics",
+      imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80",
+    },
+  ];
+
   const categories = [
-    { name: "All Innovations", count: 48, icon: Sparkles, active: true },
+    { name: "All Products", count: 48, icon: Sparkles, active: true },
     { name: "CleanTech", count: 14, icon: Leaf, active: false },
     { name: "Hardware & IoT", count: 12, icon: Cpu, active: false },
     { name: "SaaS", count: 11, icon: Layers, active: false },
@@ -24,95 +57,132 @@ export default function Home() {
     { name: "Developer Tools", count: 7, icon: Terminal, active: false },
   ];
 
-  const stats = [
-    { label: "Curated Launches", value: "500+", icon: TrendingUp },
-    { label: "Active Innovators", value: "12,000+", icon: Users },
-    { label: "Vetted & Verified", value: "100%", icon: ShieldCheck },
-  ];
-
   return (
-    <div className="relative flex flex-col items-center justify-start overflow-hidden">
-      {/* Ambient Gradient Glow Accents */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-indigo-500/15 via-violet-500/10 to-transparent blur-3xl pointer-events-none -z-10" />
+    <div className="relative min-h-screen bg-[#090b10] text-[#f4ede4] overflow-x-hidden selection:bg-[#c9a978] selection:text-[#090b10]">
+      {/* Dynamic Animated Atmospheric Background */}
+      <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
+        {/* Deep Atmospheric Skyline Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0e121b] via-[#10141f] to-[#090b10]" />
+
+        {/* Ambient Glowing Orbs */}
+        <div className="absolute -top-40 left-1/4 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-[#c9a978]/15 via-[#dfcfbd]/10 to-transparent blur-[140px] animate-ambient-1" />
+        <div className="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-indigo-500/10 via-[#c9a978]/10 to-transparent blur-[160px] animate-ambient-2" />
+        <div className="absolute bottom-10 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-amber-600/10 via-transparent to-transparent blur-[150px] animate-pulse-slow" />
+
+        {/* Subtle Architectural Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
+      </div>
 
       {/* Hero Section */}
-      <section className="relative w-full max-w-6xl mx-auto px-4 pt-20 pb-16 sm:px-6 sm:pt-28 sm:pb-20 text-center">
-        {/* Release Pill Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3.5 py-1.5 text-xs font-medium text-indigo-300 shadow-inner backdrop-blur-md mb-8 hover:border-indigo-400/50 transition-all cursor-default">
-          <Sparkles className="h-3.5 w-3.5 text-indigo-400 animate-pulse" />
-          <span>Curated Platform for Next-Gen Tech & Makers</span>
-          <span className="h-1 w-1 rounded-full bg-indigo-400" />
-          <span className="text-zinc-400">Day 2 Live</span>
-        </div>
-
-        {/* Hero Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.15] mb-6">
-          You build the vision.{" "}
-          <span className="block sm:inline bg-gradient-to-r from-indigo-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent">
-            We manage the tech.
+      <section className="relative min-h-[95vh] flex flex-col justify-between pt-28 sm:pt-36 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Massive Watermark Typographic Brand â€” Just like "HORIZON" */}
+        <div className="absolute top-20 sm:top-24 left-0 right-0 flex justify-center pointer-events-none select-none -z-10 overflow-hidden">
+          <span className="watermark-text text-[19vw] font-extrabold tracking-[0.16em] uppercase leading-none opacity-80 scale-y-105">
+            TAPP
           </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-base sm:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-10 font-normal">
-          You bring the idea. We bring the technology to life. From design to development and deployment, we handle the technical work so you can focus on what matters most—your vision.
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Link
-            href="#catalog"
-            className="w-full sm:w-auto flex items-center justify-center gap-2.5 rounded-full bg-indigo-600 hover:bg-indigo-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all active:scale-95"
-          >
-            <Compass className="h-4 w-4" />
-            <span>Explore Directory</span>
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-
-          <Link
-            href="/submit-product"
-            className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/80 hover:bg-zinc-800/80 hover:border-zinc-700 px-7 py-3.5 text-sm font-semibold text-zinc-200 hover:text-white transition-all active:scale-95 backdrop-blur-sm"
-          >
-            <Plus className="h-4 w-4 text-indigo-400" />
-            <span>Submit a Product</span>
-          </Link>
         </div>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={idx}
-                className="flex items-center justify-center gap-3.5 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 px-5 py-4 backdrop-blur-md"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                  <Icon className="h-5 w-5" />
+        {/* Centered Hero Message Requested by User */}
+        <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto mt-8 sm:mt-16">
+          {/* Subtle Tagline Pill */}
+          <div className="inline-flex items-center gap-2 rounded-full glass-pill px-4 py-1.5 text-xs font-medium text-[#dfcfbd] mb-6 shadow-lg">
+            <Sparkles className="h-3.5 w-3.5 text-[#c9a978]" />
+            <span className="tracking-wide">Premier Product Discovery & Showcase</span>
+          </div>
+
+          {/* User Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#f4ede4] leading-[1.15] mb-5">
+            You build the vision.{" "}
+            <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#dfcfbd] via-[#c9a978] to-[#e8d5c4] bg-clip-text text-transparent">
+              We manage the tech.
+            </span>
+          </h1>
+
+          {/* User Details / Description */}
+          <p className="text-sm sm:text-lg text-[#a89a8c] max-w-2xl mx-auto leading-relaxed mb-8">
+            You bring the idea. We bring the technology to life. From design to development and deployment, we handle the technical work so you can focus on what matters mostâ€”your vision.
+          </p>
+
+          {/* Dual Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Link
+              href="#catalog"
+              className="flex items-center justify-center gap-2 rounded-full bg-[#f4ede4] hover:bg-white text-[#090b10] px-7 py-3 text-xs font-bold tracking-wider uppercase shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95"
+            >
+              <span>Explore Directory</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+
+            <Link
+              href="/submit-product"
+              className="flex items-center justify-center gap-2 rounded-full glass-pill hover:bg-white/10 text-[#dfcfbd] hover:text-white px-7 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-300 active:scale-95"
+            >
+              <Plus className="h-3.5 w-3.5 text-[#c9a978]" />
+              <span>Submit Product</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Bottom Horizontal Showcase Row (matching reference image style) */}
+        <div className="relative z-10 mt-16 sm:mt-24 pt-8 border-t border-white/10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-6">
+            {/* Left Headline (like "The World Of Luxury") */}
+            <div className="max-w-xs">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4ede4] leading-tight">
+                The World Of Innovation
+              </h2>
+              <p className="text-xs text-[#a89a8c] mt-2 leading-relaxed">
+                Unlock the next generation of breakthroughs by exploring a curated selection of products.
+              </p>
+            </div>
+
+            {/* Horizontal Cards Showcase */}
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {showcaseProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className="preview-card group relative h-48 rounded-2xl overflow-hidden glass-pill border border-white/10 shadow-xl cursor-pointer"
+                >
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 brightness-[0.75] group-hover:brightness-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  
+                  <div className="absolute bottom-3 left-3 right-3 flex flex-col">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#c9a978] mb-1">
+                      {product.category}
+                    </span>
+                    <h3 className="text-sm font-bold text-white leading-snug group-hover:text-[#dfcfbd] transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-[11px] text-zinc-300 line-clamp-1 mt-0.5 opacity-90">
+                      {product.tagline}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-left">
-                  <div className="text-xl font-bold tracking-tight text-white">{stat.value}</div>
-                  <div className="text-xs text-zinc-400">{stat.label}</div>
-                </div>
-              </div>
-            );
-          })}
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Catalog & Filter Section */}
-      <section id="catalog" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-zinc-800/60">
+      <section id="catalog" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
         <div id="categories" className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-white">Curated Directory</h2>
-            <p className="text-sm text-zinc-400 mt-1">
+            <h2 className="text-2xl font-bold tracking-tight text-[#f4ede4]">Curated Directory</h2>
+            <p className="text-sm text-[#a89a8c] mt-1">
               Browse approved launches verified by our curation team.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-zinc-400">
+          <div className="flex items-center gap-2 text-xs text-[#a89a8c]">
             <span>Sort by:</span>
-            <select className="bg-zinc-900 border border-zinc-800 rounded-lg px-2.5 py-1.5 text-zinc-200 focus:outline-none focus:border-indigo-500">
+            <select className="bg-[#12151f] border border-white/10 rounded-lg px-3 py-1.5 text-[#dfcfbd] focus:outline-none focus:border-[#c9a978]">
               <option>Newest First</option>
               <option>Most Upvoted</option>
               <option>Alphabetical</option>
@@ -120,7 +190,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Category Filter Pills (Horizontal Scroll on Mobile) */}
+        {/* Category Filter Pills */}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar mb-10">
           {categories.map((cat, idx) => {
             const Icon = cat.icon;
@@ -129,15 +199,15 @@ export default function Home() {
                 key={idx}
                 className={`flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   cat.active
-                    ? "bg-white text-zinc-950 shadow-md font-semibold"
-                    : "bg-zinc-900/90 text-zinc-400 border border-zinc-800 hover:border-zinc-700 hover:text-white"
+                    ? "bg-[#f4ede4] text-[#090b10] font-bold shadow-md"
+                    : "glass-pill text-[#a89a8c] hover:text-white"
                 }`}
               >
                 <Icon className="h-3.5 w-3.5" />
                 <span>{cat.name}</span>
                 <span
                   className={`rounded-full px-1.5 py-0.2 text-[10px] ${
-                    cat.active ? "bg-zinc-200 text-zinc-950 font-bold" : "bg-zinc-800 text-zinc-400"
+                    cat.active ? "bg-[#090b10]/20 text-[#090b10] font-bold" : "bg-white/10 text-[#dfcfbd]"
                   }`}
                 >
                   {cat.count}
@@ -147,26 +217,26 @@ export default function Home() {
           })}
         </div>
 
-        {/* Day 2 Preview Banner & Architecture Preview */}
-        <div className="rounded-3xl border border-indigo-500/20 bg-gradient-to-b from-indigo-950/30 via-zinc-900/40 to-zinc-950/60 p-8 sm:p-12 text-center backdrop-blur-xl">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 mb-4">
+        {/* Catalog Showcase Banner */}
+        <div className="rounded-3xl glass-pill p-8 sm:p-12 text-center border border-white/10">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c9a978]/15 border border-[#c9a978]/30 text-[#c9a978] mb-4">
             <Sparkles className="h-6 w-6" />
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-            Day 2 Foundation Complete
+          <h3 className="text-xl sm:text-2xl font-bold text-[#f4ede4] mb-2">
+            Day 2: Premium Architectural Experience Live
           </h3>
-          <p className="text-zinc-400 text-sm max-w-xl mx-auto mb-6">
-            The shell layout, sticky navigation bar, dark theme design system, and hero banner are live. In Day 3, this space transforms into the responsive 3-column product card grid with live interactive cards and dynamic routes!
+          <p className="text-[#a89a8c] text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+            The floating frosted pill navigation, animated atmospheric background, and luxury centerpiece watermark &quot;TAPP&quot; are active. In Day 3, this directory area connects with dynamic Firestore data!
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-xs">
-            <span className="rounded-full bg-zinc-800/80 border border-zinc-700/60 px-3.5 py-1.5 text-zinc-300">
-              ⚡ Next.js 16 App Router
+            <span className="rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-[#dfcfbd]">
+              âœ¨ Luxury Glassmorphism & Gold Hue
             </span>
-            <span className="rounded-full bg-zinc-800/80 border border-zinc-700/60 px-3.5 py-1.5 text-zinc-300">
-              🎨 Tailwind CSS v4 Theme
+            <span className="rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-[#dfcfbd]">
+              ðŸ›ï¸ Typographic Watermark &quot;TAPP&quot;
             </span>
-            <span className="rounded-full bg-zinc-800/80 border border-zinc-700/60 px-3.5 py-1.5 text-zinc-300">
-              🔒 Responsive Shell Ready
+            <span className="rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-[#dfcfbd]">
+              ðŸŽ¬ Atmospheric Background Motion
             </span>
           </div>
         </div>
