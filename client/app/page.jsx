@@ -53,26 +53,26 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#fbf9f5] text-[#1c1917] overflow-x-hidden selection:bg-[#c9a978] selection:text-[#1c1917]">
-      {/* Dynamic Animated Atmospheric Background for Faded Off-White */}
+    <div className="relative min-h-screen bg-[#0a0c10] text-[#f4ede4] overflow-x-hidden selection:bg-[#c9a978] selection:text-[#0a0c10]">
+      {/* Dynamic Animated Atmospheric Background on Off-Black */}
       <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
-        {/* Soft Faded Off-White Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#fcfbf9] via-[#f7f5ef] to-[#eeeae0]" />
+        {/* Deep Atmospheric Skyline Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0e121b] via-[#10141f] to-[#0a0c10]" />
 
-        {/* Ambient Warm Golden & Champagne Light Blooms */}
-        <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#c9a978]/20 via-[#dfcfbd]/25 to-transparent blur-[120px] animate-ambient-1" />
-        <div className="absolute top-1/3 -right-32 w-[550px] h-[550px] rounded-full bg-gradient-to-bl from-amber-200/25 via-[#c9a978]/15 to-transparent blur-[140px] animate-ambient-2" />
-        <div className="absolute bottom-10 left-1/3 w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-stone-300/30 via-transparent to-transparent blur-[130px] animate-pulse-slow" />
+        {/* Ambient Glowing Orbs */}
+        <div className="absolute -top-40 left-1/4 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-[#c9a978]/15 via-[#dfcfbd]/10 to-transparent blur-[140px] animate-ambient-1" />
+        <div className="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-indigo-500/10 via-[#c9a978]/10 to-transparent blur-[160px] animate-ambient-2" />
+        <div className="absolute bottom-10 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-amber-600/10 via-transparent to-transparent blur-[150px] animate-pulse-slow" />
 
         {/* Subtle Architectural Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1c191708_1px,transparent_1px),linear-gradient(to_bottom,#1c191708_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
       </div>
 
       {/* Hero Section */}
       <section className="relative min-h-[95vh] flex flex-col justify-between pt-28 sm:pt-36 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Massive Watermark Typographic Brand "TAPP" */}
         <div className="absolute top-20 sm:top-24 left-0 right-0 flex justify-center pointer-events-none select-none -z-10 overflow-hidden">
-          <span className="watermark-text text-[19vw] font-extrabold tracking-[0.16em] uppercase leading-none scale-y-105">
+          <span className="watermark-text text-[19vw] font-extrabold tracking-[0.16em] uppercase leading-none opacity-80 scale-y-105">
             TAPP
           </span>
         </div>
@@ -80,21 +80,21 @@ export default function Home() {
         {/* Centered Hero Message Requested by User */}
         <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto mt-8 sm:mt-16">
           {/* Subtle Tagline Pill */}
-          <div className="inline-flex items-center gap-2 rounded-full glass-pill px-4 py-1.5 text-xs font-medium text-[#716a63] mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full glass-pill px-4 py-1.5 text-xs font-medium text-[#dfcfbd] mb-6 shadow-lg">
             <Sparkles className="h-3.5 w-3.5 text-[#c9a978]" />
             <span className="tracking-wide">Premier Product Discovery & Showcase</span>
           </div>
 
           {/* User Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1c1917] leading-[1.15] mb-5">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#f4ede4] leading-[1.15] mb-5">
             You build the vision.{" "}
-            <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#1c1917] via-[#8c6d3d] to-[#c9a978] bg-clip-text text-transparent">
+            <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#dfcfbd] via-[#c9a978] to-[#e8d5c4] bg-clip-text text-transparent">
               We manage the tech.
             </span>
           </h1>
 
           {/* User Details / Description */}
-          <p className="text-sm sm:text-lg text-[#57534e] max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-sm sm:text-lg text-[#a89a8c] max-w-2xl mx-auto leading-relaxed mb-8">
             You bring the idea. We bring the technology to life. From design to development and deployment, we handle the technical work so you can focus on what matters most—your vision.
           </p>
 
@@ -102,7 +102,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Link
               href="#catalog"
-              className="flex items-center justify-center gap-2 rounded-full bg-[#1c1917] hover:bg-black text-[#fbf9f5] px-7 py-3 text-xs font-bold tracking-wider uppercase shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95"
+              className="flex items-center justify-center gap-2 rounded-full bg-[#f4ede4] hover:bg-white text-[#0a0c10] px-7 py-3 text-xs font-bold tracking-wider uppercase shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95"
             >
               <span>Explore Directory</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -110,7 +110,7 @@ export default function Home() {
 
             <Link
               href="/submit-product"
-              className="flex items-center justify-center gap-2 rounded-full glass-pill hover:bg-black/5 text-[#1c1917] px-7 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-300 active:scale-95 border border-black/10"
+              className="flex items-center justify-center gap-2 rounded-full glass-pill hover:bg-white/10 text-[#dfcfbd] hover:text-white px-7 py-3 text-xs font-bold tracking-wider uppercase transition-all duration-300 active:scale-95"
             >
               <Plus className="h-3.5 w-3.5 text-[#c9a978]" />
               <span>Submit Product</span>
@@ -119,14 +119,14 @@ export default function Home() {
         </div>
 
         {/* Bottom Horizontal Showcase Row */}
-        <div className="relative z-10 mt-16 sm:mt-24 pt-8 border-t border-black/8">
+        <div className="relative z-10 mt-16 sm:mt-24 pt-8 border-t border-white/10">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-6">
             {/* Left Headline */}
             <div className="max-w-xs">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1c1917] leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f4ede4] leading-tight">
                 The World Of Innovation
               </h2>
-              <p className="text-xs text-[#716a63] mt-2 leading-relaxed">
+              <p className="text-xs text-[#a89a8c] mt-2 leading-relaxed">
                 Unlock the next generation of breakthroughs by exploring a curated selection of products.
               </p>
             </div>
@@ -136,25 +136,25 @@ export default function Home() {
               {showcaseProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="preview-card group relative h-48 rounded-2xl overflow-hidden glass-pill border border-black/8 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300"
+                  className="preview-card group relative h-48 rounded-2xl overflow-hidden glass-pill border border-white/10 shadow-xl cursor-pointer"
                 >
                   <Image
                     src={product.imageUrl}
                     alt={product.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 25vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 brightness-[0.85] group-hover:brightness-95"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 brightness-[0.75] group-hover:brightness-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
                   <div className="absolute bottom-3 left-3 right-3 flex flex-col">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#dfcfbd] mb-1">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#c9a978] mb-1">
                       {product.category}
                     </span>
                     <h3 className="text-sm font-bold text-white leading-snug group-hover:text-[#dfcfbd] transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-[11px] text-zinc-200 line-clamp-1 mt-0.5 opacity-90">
+                    <p className="text-[11px] text-zinc-300 line-clamp-1 mt-0.5 opacity-90">
                       {product.tagline}
                     </p>
                   </div>
@@ -166,18 +166,18 @@ export default function Home() {
       </section>
 
       {/* Catalog & Filter Section */}
-      <section id="catalog" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-black/8">
+      <section id="catalog" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
         <div id="categories" className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-[#1c1917]">Curated Directory</h2>
-            <p className="text-sm text-[#716a63] mt-1">
+            <h2 className="text-2xl font-bold tracking-tight text-[#f4ede4]">Curated Directory</h2>
+            <p className="text-sm text-[#a89a8c] mt-1">
               Browse approved launches verified by our curation team.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-[#716a63]">
+          <div className="flex items-center gap-2 text-xs text-[#a89a8c]">
             <span>Sort by:</span>
-            <select className="bg-white border border-black/10 rounded-lg px-3 py-1.5 text-[#1c1917] focus:outline-none focus:border-[#c9a978]">
+            <select className="bg-[#12151f] border border-white/10 rounded-lg px-3 py-1.5 text-[#dfcfbd] focus:outline-none focus:border-[#c9a978]">
               <option>Newest First</option>
               <option>Most Upvoted</option>
               <option>Alphabetical</option>
@@ -194,15 +194,15 @@ export default function Home() {
                 key={idx}
                 className={`flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   cat.active
-                    ? "bg-[#1c1917] text-[#fbf9f5] font-bold shadow-sm"
-                    : "glass-pill text-[#716a63] hover:text-[#1c1917]"
+                    ? "bg-[#f4ede4] text-[#0a0c10] font-bold shadow-md"
+                    : "glass-pill text-[#a89a8c] hover:text-white"
                 }`}
               >
                 <Icon className="h-3.5 w-3.5" />
                 <span>{cat.name}</span>
                 <span
                   className={`rounded-full px-1.5 py-0.2 text-[10px] ${
-                    cat.active ? "bg-white/20 text-[#fbf9f5] font-bold" : "bg-black/5 text-[#716a63]"
+                    cat.active ? "bg-[#0a0c10]/20 text-[#0a0c10] font-bold" : "bg-white/10 text-[#dfcfbd]"
                   }`}
                 >
                   {cat.count}
@@ -213,25 +213,25 @@ export default function Home() {
         </div>
 
         {/* Catalog Showcase Banner */}
-        <div className="rounded-3xl glass-pill p-8 sm:p-12 text-center border border-black/8">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c9a978]/15 border border-[#c9a978]/30 text-[#8c6d3d] mb-4">
+        <div className="rounded-3xl glass-pill p-8 sm:p-12 text-center border border-white/10">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c9a978]/15 border border-[#c9a978]/30 text-[#c9a978] mb-4">
             <Sparkles className="h-6 w-6" />
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-[#1c1917] mb-2">
-            Day 2: Faded Off-White Architectural Experience Live
+          <h3 className="text-xl sm:text-2xl font-bold text-[#f4ede4] mb-2">
+            Day 2: Off-Black Architectural Experience Live
           </h3>
-          <p className="text-[#57534e] text-sm max-w-xl mx-auto mb-6 leading-relaxed">
-            The floating frosted pill navigation, animated atmospheric background, and luxury centerpiece watermark &quot;TAPP&quot; are active in faded off-white styling.
+          <p className="text-[#a89a8c] text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+            The floating frosted pill navigation, animated atmospheric background, and luxury centerpiece watermark &quot;TAPP&quot; are active in rich off-black styling.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-xs">
-            <span className="rounded-full bg-black/5 border border-black/10 px-3.5 py-1.5 text-[#1c1917]">
-              ✨ Faded Off-White & Alabaster Palette
+            <span className="rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-[#dfcfbd]">
+              ✨ Rich Off-Black Canvas
             </span>
-            <span className="rounded-full bg-black/5 border border-black/10 px-3.5 py-1.5 text-[#1c1917]">
+            <span className="rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-[#dfcfbd]">
               🏛️ Architectural Watermark &quot;TAPP&quot;
             </span>
-            <span className="rounded-full bg-black/5 border border-black/10 px-3.5 py-1.5 text-[#1c1917]">
-              🎬 Atmospheric Light Animations
+            <span className="rounded-full bg-white/5 border border-white/10 px-3.5 py-1.5 text-[#dfcfbd]">
+              🎬 Atmospheric Light Motion
             </span>
           </div>
         </div>
