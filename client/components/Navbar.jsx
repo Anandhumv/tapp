@@ -20,8 +20,11 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Centered Desktop Nav */}
+        {/* Centered Desktop Nav with Home */}
         <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium text-[#716a63]">
+          <Link href="/" className="hover:text-[#1c1917] transition-colors font-semibold">
+            Home
+          </Link>
           <Link href="#about" className="hover:text-[#1c1917] transition-colors">
             About
           </Link>
@@ -69,6 +72,13 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="absolute top-16 left-4 right-4 sm:hidden glass-pill rounded-3xl p-5 space-y-4 pointer-events-auto shadow-xl animate-in slide-in-from-top-2">
           <nav className="flex flex-col space-y-3 text-sm font-medium text-[#1c1917]">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-xl hover:bg-black/5 font-semibold"
+            >
+              Home
+            </Link>
             <Link
               href="#about"
               onClick={() => setMobileMenuOpen(false)}
