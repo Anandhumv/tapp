@@ -11,12 +11,12 @@ Track the daily progress of the **tapp** product directory web application.
   - [x] Reorganize into clean `client/` and `server/` domains.
   - [x] Commit Day 1 baseline to Git and push to GitHub repository `tapp`.
 
-- [ ] **Day 2: Shell & Layout Foundation**
-  - [ ] Define dark theme, typography, and scrollbars in `client/app/globals.css`.
-  - [ ] Build responsive `components/Navbar.jsx` with logo, navigation links, and dynamic auth placeholders.
-  - [ ] Build `components/Footer.jsx` with credentials, copyright, and quick links.
-  - [ ] Wrap application routes in `client/app/layout.jsx`.
-  - [ ] Build Homepage Hero banner in `client/app/page.jsx` with headline, tagline, and CTA.
+- [x] **Day 2: Shell & Layout Foundation**
+  - [x] Define dark theme, typography, and scrollbars in `client/app/globals.css`.
+  - [x] Build responsive `components/Navbar.jsx` with logo, navigation links, and dynamic auth placeholders.
+  - [x] Build `components/Footer.jsx` with credentials, copyright, and quick links.
+  - [x] Wrap application routes in `client/app/layout.js`.
+  - [x] Build Homepage Hero banner in `client/app/page.jsx` with headline, tagline, and CTA.
 
 - [ ] **Day 3: Static UI & Card Architecture**
   - [ ] Create reusable `components/ProductCard.jsx` with image, name, category badge, and brief description.
