@@ -23,6 +23,22 @@ body {
   overflow-x: hidden;
 }
 
+.home-video-backdrop {
+  transform: scale(1.04);
+  transform-origin: center;
+  filter: saturate(1.1) contrast(1.08);
+  animation: videoBackdropBreath 22s ease-in-out infinite;
+}
+
+@keyframes videoBackdropBreath {
+  0%, 100% {
+    transform: scale(1.04);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
 /* Luxury Watermark Typography on Off-Black */
 .watermark-text {
   font-family: var(--font-geist-sans), sans-serif;
@@ -42,41 +58,6 @@ body {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* Background Animated Glows */
-@keyframes ambientDrift {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.35;
-  }
-  50% {
-    transform: translate(-30px, 20px) scale(1.15);
-    opacity: 0.55;
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.25;
-    transform: scale(0.95);
-  }
-  50% {
-    opacity: 0.45;
-    transform: scale(1.05);
-  }
-}
-
-.animate-ambient-1 {
-  animation: ambientDrift 14s ease-in-out infinite;
-}
-
-.animate-ambient-2 {
-  animation: ambientDrift 18s ease-in-out infinite reverse;
-}
-
-.animate-pulse-slow {
-  animation: pulseGlow 10s ease-in-out infinite;
-}
-
 /* Horizontal Card Hover */
 .preview-card {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -84,6 +65,12 @@ body {
 .preview-card:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 120, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-video-backdrop {
+    animation: none;
+  }
 }
 
 /* Custom Scrollbar for Off-Black */

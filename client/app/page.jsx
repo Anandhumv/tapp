@@ -1,15 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Sparkles,
-  ArrowRight,
+  Bot,
   Plus,
   Cpu,
   Leaf,
   Layers,
-  Bot,
   Terminal,
+  Sparkles,
+  PlusCircle,
+  ArrowRight,
 } from "lucide-react";
+import BackgroundCanvas from "../components/BackgroundCanvas";
+
+const backgroundVideo = {
+  src: "https://videos.pexels.com/video-files/45678912/29875684_3840_2160_30fps.mp4",
+  poster: "https://images.pexels.com/videos/45678912/preview-4.jpg?auto=compress&cs=tinysrgb&w=1600",
+}
 
 export default function Home() {
   const showcaseProducts = [
@@ -18,28 +25,28 @@ export default function Home() {
       name: "SolarFlow 800",
       category: "CleanTech",
       tagline: "High-efficiency balcony solar microinverter",
-      imageUrl: "https://images.unsplash.com/photo-1509391365360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      imageUrl: "/showcase-solarflow.svg",
     },
     {
       id: "aeropulse",
       name: "AeroPulse LiDAR",
       category: "Hardware",
       tagline: "Autonomous aerial sensor payload",
-      imageUrl: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&auto=format&fit=crop&q=80",
+      imageUrl: "/showcase-aeropulse.svg",
     },
     {
       id: "hypersync",
       name: "HyperSync Studio",
       category: "SaaS",
       tagline: "CRDT-based collaborative workspace",
-      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+      imageUrl: "/showcase-hypersync.svg",
     },
     {
       id: "neurotrace",
       name: "NeuroTrace Vision",
       category: "AI",
       tagline: "Edge neural inference for robotics",
-      imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80",
+      imageUrl: "/showcase-neurotrace.svg",
     },
   ];
 
@@ -54,18 +61,25 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#0a0c10] text-[#f4ede4] overflow-x-hidden selection:bg-[#c9a978] selection:text-[#0a0c10]">
-      {/* Dynamic Animated Atmospheric Background on Off-Black */}
+      {/* Cinematic animated background on off-black */}
       <div className="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
-        {/* Deep Atmospheric Skyline Gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0e121b] via-[#10141f] to-[#0a0c10]" />
-
-        {/* Ambient Glowing Orbs */}
-        <div className="absolute -top-40 left-1/4 w-[650px] h-[650px] rounded-full bg-gradient-to-br from-[#c9a978]/15 via-[#dfcfbd]/10 to-transparent blur-[140px] animate-ambient-1" />
-        <div className="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-indigo-500/10 via-[#c9a978]/10 to-transparent blur-[160px] animate-ambient-2" />
-        <div className="absolute bottom-10 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-amber-600/10 via-transparent to-transparent blur-[150px] animate-pulse-slow" />
-
-        {/* Subtle Architectural Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
+        <video
+          className="home-video-backdrop absolute inset-0 h-full w-full object-cover opacity-45"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={backgroundVideo.poster}
+          aria-hidden="true"
+        >
+          <source src={backgroundVideo.src} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-[#0a0c10]/55" />
+        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(201,169,120,0.18),transparent_34%,rgba(79,70,229,0.12)_68%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0c10]/30 via-[#0a0c10]/72 to-[#0a0c10]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_64%_54%_at_50%_38%,#000_70%,transparent_100%)]" />
       </div>
 
       {/* Hero Section */}
@@ -192,18 +206,16 @@ export default function Home() {
             return (
               <button
                 key={idx}
-                className={`flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all ${
-                  cat.active
-                    ? "bg-[#f4ede4] text-[#0a0c10] font-bold shadow-md"
-                    : "glass-pill text-[#a89a8c] hover:text-white"
-                }`}
+                className={`flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all ${cat.active
+                  ? "bg-[#f4ede4] text-[#0a0c10] font-bold shadow-md"
+                  : "glass-pill text-[#a89a8c] hover:text-white"
+                  }`}
               >
                 <Icon className="h-3.5 w-3.5" />
                 <span>{cat.name}</span>
                 <span
-                  className={`rounded-full px-1.5 py-0.2 text-[10px] ${
-                    cat.active ? "bg-[#0a0c10]/20 text-[#0a0c10] font-bold" : "bg-white/10 text-[#dfcfbd]"
-                  }`}
+                  className={`rounded-full px-1.5 py-0.2 text-[10px] ${cat.active ? "bg-[#0a0c10]/20 text-[#0a0c10] font-bold" : "bg-white/10 text-[#dfcfbd]"
+                    }`}
                 >
                   {cat.count}
                 </span>

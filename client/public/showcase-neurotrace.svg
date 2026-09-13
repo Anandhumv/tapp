@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">NeuroTrace product preview</title>
+  <desc id="desc">A dark neural vision illustration with a scanning lens and luminous inference nodes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#130f1f"/>
+      <stop offset="0.52" stop-color="#09111b"/>
+      <stop offset="1" stop-color="#07090d"/>
+    </linearGradient>
+    <linearGradient id="lens" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f4ede4"/>
+      <stop offset="0.5" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feBlend in="SourceGraphic" in2="blur"/>
+    </filter>
+  </defs>
+  <rect width="960" height="640" fill="url(#bg)"/>
+  <g opacity="0.45">
+    <circle cx="482" cy="320" r="248" fill="none" stroke="#ffffff" stroke-opacity="0.06"/>
+    <circle cx="482" cy="320" r="178" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
+    <circle cx="482" cy="320" r="108" fill="none" stroke="#ffffff" stroke-opacity="0.1"/>
+  </g>
+  <g stroke="#dfcfbd" stroke-opacity="0.28" stroke-width="2">
+    <path d="M248 200l176 120-172 126"/>
+    <path d="M714 188 540 320l178 132"/>
+    <path d="M360 142l64 178-68 182"/>
+    <path d="M604 140l-64 180 62 184"/>
+  </g>
+  <g filter="url(#glow)">
+    <circle cx="482" cy="320" r="84" fill="#0a0c10" stroke="url(#lens)" stroke-width="10"/>
+    <circle cx="482" cy="320" r="38" fill="url(#lens)" opacity="0.72"/>
+    <path d="M398 320h168M482 236v168" stroke="#ffffff" stroke-opacity="0.32" stroke-width="2"/>
+  </g>
+  <g fill="#c9a978">
+    <circle cx="248" cy="200" r="13"/>
+    <circle cx="252" cy="446" r="13"/>
+    <circle cx="714" cy="188" r="13"/>
+    <circle cx="718" cy="452" r="13"/>
+    <circle cx="360" cy="142" r="10"/>
+    <circle cx="356" cy="502" r="10"/>
+    <circle cx="604" cy="140" r="10"/>
+    <circle cx="602" cy="504" r="10"/>
+  </g>
+  <rect x="318" y="536" width="324" height="16" rx="8" fill="#ffffff" opacity="0.1"/>
+  <rect x="318" y="536" width="212" height="16" rx="8" fill="#22d3ee" opacity="0.48"/>
+</svg>
