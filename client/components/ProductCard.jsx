@@ -1,44 +1,69 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { CheckCircle2, Bookmark } from "lucide-react";
 
 export default function ProductCard({ product }) {
-    const { id, name, category, tagline, description, imageUrl } = product;
+    const {
+        id,
+        name,
+        category,
+        tagline,
+        description,
+        imageUrl,
+        supplier = "Verified Supplier",
+        supplierInitials = "TS",
+    } = product;
 
     return (
-        <div className="group relative flex flex-col justify-between rounded-xl border border-neutral-800 bg-neutral-900/40 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-neutral-700 hover:bg-neutral-900/80">
+        <div className="group rounded-2xl bg-[#131316] border border-white/10 hover:border-[#c9a978]/40 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xl">
             <div>
-                <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-lg bg-neutral-950 border border-neutral-800/80">
+                {/* Media Container */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-zinc-900">
                     <img
                         src={imageUrl}
                         alt={name}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
                     />
-                </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#131316] via-transparent to-transparent opacity-90" />
 
-                <div className="mb-2">
-                    <span className="inline-block rounded-full border border-blue-500/20 bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-400">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-semibold text-[#c9a978] uppercase tracking-wider">
                         {category}
                     </span>
+
+                    <button
+                        type="button"
+                        className="absolute top-3 right-3 p-2 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-zinc-300 hover:text-white transition-colors"
+                    >
+                        <Bookmark className="w-3.5 h-3.5" />
+                    </button>
                 </div>
 
-                <h3 className="text-lg font-semibold tracking-tight text-white group-hover:text-blue-400 transition-colors">
-                    {name}
-                </h3>
-                <p className="mt-1 text-sm font-medium text-neutral-300 line-clamp-1">
-                    {tagline}
-                </p>
-                <p className="mt-2 text-xs text-neutral-400 line-clamp-2">
-                    {description}
-                </p>
+                {/* Content */}
+                <div className="p-6">
+                    <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-[#c9a978] transition-colors">
+                        {name}
+                    </h3>
+                    <p className="text-xs font-medium text-zinc-300 mb-2">{tagline}</p>
+                    <p className="text-xs text-zinc-500 leading-relaxed line-clamp-2">
+                        {description}
+                    </p>
+                </div>
             </div>
 
-            <div className="mt-4 pt-4 border-t border-neutral-800/60">
+            {/* Footer */}
+            <div className="px-6 py-4 border-t border-white/5 flex items-center justify-between bg-white/[0.01]">
+                <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 rounded-full bg-[#c9a978]/20 text-[#c9a978] flex items-center justify-center text-[10px] font-bold">
+                        {supplierInitials}
+                    </div>
+                    <span className="text-xs text-zinc-400 font-medium">{supplier}</span>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#c9a978]" />
+                </div>
+
                 <Link
                     href={`/products/${id}`}
-                    className="flex items-center justify-between text-xs font-medium text-neutral-300 hover:text-white transition-colors"
+                    className="text-xs font-semibold text-[#c9a978] hover:underline flex items-center gap-1"
                 >
-                    <span>View Details & Specs</span>
-                    <ArrowUpRight className="h-4 w-4 text-neutral-500 group-hover:text-blue-400 transition-transform" />
+                    Explore Specs &rarr;
                 </Link>
             </div>
         </div>

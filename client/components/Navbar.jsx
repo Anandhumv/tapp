@@ -1,118 +1,51 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Menu, X, ArrowUpRight } from "lucide-react";
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
-    <header className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
-      <div className="w-full max-w-6xl glass-pill rounded-full px-5 py-2.5 sm:px-7 sm:py-3 flex items-center justify-between pointer-events-auto transition-all duration-300">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-[#dfcfbd] via-[#c9a978] to-[#997746] text-[#0a0c10] shadow-sm transition-transform duration-300 group-hover:scale-105">
-            <Sparkles className="h-4 w-4 fill-current" />
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      <nav className="flex items-center justify-between w-full max-w-5xl px-5 py-3 rounded-full bg-[#18181b]/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#c9a978] to-[#9a7b4c] text-black font-bold text-sm shadow-inner">
+            TP
           </div>
-          <span className="text-lg font-bold tracking-wider text-[#f4ede4] uppercase group-hover:text-[#dfcfbd] transition-colors">
-            tapp
+          <span className="font-bold tracking-wider text-sm bg-gradient-to-r from-white via-zinc-200 to-[#c9a978] bg-clip-text text-transparent">
+            TAPP
           </span>
         </Link>
 
-        {/* Centered Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium text-[#a89a8c]">
-          <Link href="/" className="hover:text-[#f4ede4] text-[#f4ede4] font-semibold transition-colors">
-            Home
+        {/* Nav Links */}
+        <div className="hidden md:flex items-center gap-8 text-xs font-medium text-zinc-400">
+          <Link href="/" className="text-white transition-colors">
+            Explore
           </Link>
-          <Link href="#about" className="hover:text-[#f4ede4] transition-colors">
-            About
-          </Link>
-          <Link href="#catalog" className="hover:text-[#f4ede4] transition-colors">
-            Products
-          </Link>
-          <Link href="#categories" className="hover:text-[#f4ede4] transition-colors">
+          <a href="#directory" className="hover:text-white transition-colors">
+            Categories
+          </a>
+          <a href="#services" className="hover:text-white transition-colors">
             Services
-          </Link>
-          <Link href="/docs" className="hover:text-[#f4ede4] transition-colors">
-            Roadmap
-          </Link>
-        </nav>
+          </a>
+          <a href="#ecosystem" className="hover:text-white transition-colors">
+            Ecosystem
+          </a>
+        </div>
 
-        {/* Action Button */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Right Actions */}
+        <div className="flex items-center gap-4">
+          <Link
+            href="/login"
+            className="hidden sm:inline-block text-xs font-medium text-zinc-400 hover:text-white transition-colors"
+          >
+            Sign In
+          </Link>
           <Link
             href="/submit-product"
-            className="flex items-center gap-1.5 rounded-full bg-[#f4ede4] hover:bg-white text-[#0a0c10] px-5 py-2 text-xs font-bold tracking-wide shadow-md transition-all duration-300 hover:scale-[1.03] active:scale-95"
+            className="relative group flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-black bg-[#c9a978] hover:bg-[#dfcfbd] transition-all shadow-lg shadow-[#c9a978]/20"
           >
-            <span>Submit Product</span>
-            <ArrowUpRight className="h-3.5 w-3.5" />
+            <span>+ Submit Product</span>
           </Link>
         </div>
-
-        {/* Mobile Hamburger Button */}
-        <div className="flex sm:hidden items-center gap-2">
-          <Link
-            href="/submit-product"
-            className="rounded-full bg-[#f4ede4] text-[#0a0c10] px-3.5 py-1.5 text-xs font-bold"
-          >
-            Submit
-          </Link>
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
-            aria-label="Toggle Navigation"
-          >
-            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="absolute top-16 left-4 right-4 sm:hidden glass-pill rounded-3xl p-5 space-y-4 pointer-events-auto shadow-2xl animate-in slide-in-from-top-2">
-          <nav className="flex flex-col space-y-3 text-sm font-medium text-[#dfcfbd]">
-            <Link
-              href="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5 font-semibold text-white"
-            >
-              Home
-            </Link>
-            <Link
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5"
-            >
-              About
-            </Link>
-            <Link
-              href="#catalog"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5"
-            >
-              Products
-            </Link>
-            <Link
-              href="#categories"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5"
-            >
-              Services
-            </Link>
-          </nav>
-          <div className="pt-2 border-t border-white/10">
-            <Link
-              href="/submit-product"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex w-full items-center justify-center gap-1.5 rounded-full bg-[#f4ede4] text-[#0a0c10] py-2.5 text-xs font-bold tracking-wide"
-            >
-              <span>Submit Product</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      )}
+      </nav>
     </header>
   );
 }
