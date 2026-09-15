@@ -29,7 +29,7 @@ Stores product listings submitted by users or admins.
   "category": "CleanTech",
   "tagline": "High-efficiency bifacial panel setup",
   "description": "Full specifications and technical overview...",
-  "imageUrl": "https://firebasestorage.googleapis.com/...",
+  "imageUrl": "https://res.cloudinary.com/r75nkzhl/...",
   "status": "pending", // "pending" | "approved" (Controls homepage visibility)
   "userId": "submitter_uid",
   "userEmail": "submitter@example.com",

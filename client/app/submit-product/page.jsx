@@ -1,6 +1,24 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { UploadCloud, AlertCircle } from "lucide-react";
+import { useAuth } from "../../lib/AuthContext";
 
 export default function SubmitProductPage() {
+    const router = useRouter();
+    const { user, loading } = useAuth();
+
+    useEffect(() => {
+        if (!loading && !user) {
+            router.push("/login");
+        }
+    }, [loading, user, router]);
+
+    if (loading || !user) {
+        return null;
+    }
+
     return (
         <div className="mx-auto max-w-2xl py-6 space-y-8">
             <div>

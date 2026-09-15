@@ -1,5 +1,6 @@
 import { Space_Grotesk } from "next/font/google";
 import Navbar from "../components/Navbar";
+import { AuthProvider } from "../lib/AuthContext";
 import "./globals.css";
 
 // Configure the Space Grotesk Google font
@@ -20,16 +21,18 @@ export default function RootLayout({ children }) {
       <body
         className={`${spaceGrotesk.className} min-h-screen bg-[#0c0c0e] text-[#fafafa] selection:bg-[#c9a978]/30 selection:text-[#c9a978] antialiased`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <footer className="border-t border-white/10 py-12 px-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-bold text-zinc-300">TAPP</span>
-            <span>—</span>
-            <span>Luxury Hardware & Clean-Tech Ecosystem</span>
-          </div>
-          <div>© 2026 TAPP Inc. All rights reserved.</div>
-        </footer>
+        <AuthProvider>
+          <Navbar />
+          <main>{children}</main>
+          <footer className="border-t border-white/10 py-12 px-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
+            <div className="flex items-center gap-3">
+              <span className="font-bold text-zinc-300">TAPP</span>
+              <span>—</span>
+              <span>Luxury Hardware & Clean-Tech Ecosystem</span>
+            </div>
+            <div>© 2026 TAPP Inc. All rights reserved.</div>
+          </footer>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -44,7 +44,8 @@ From the repository root:
 ## Tech Stack
 - **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS v4
-- **Backend & Database**: Firebase (Authentication, Cloud Firestore, Cloud Storage)
+- **Backend & Database**: Firebase (Authentication, Cloud Firestore)
+- **Media Hosting**: Cloudinary (unsigned client-side uploads)
 - **Privileged Backend Operations**: Firebase Admin SDK
 - **Icons**: Lucide React
 - **Deployment Target**: Vercel
@@ -57,7 +58,7 @@ From the repository root:
 | `/products/[id]` | Public | Dynamic product detail page: fetches product document by ID and loads associated comments (`productId == id`). |
 | `/login` | Public | Sign-in form using Firebase Auth (Email/Password & Google Auth). |
 | `/register` | Public | Account registration; creates `users/{uid}` profile with `role: "user"`. |
-| `/submit-product` | Logged-in User | Form to upload product media to Storage (`/products/{timestamp}_{filename}`) and create Firestore document with `status: "pending"`. Redirects unauthenticated users to `/login`. |
+| `/submit-product` | Logged-in User | Form to upload product media to Cloudinary (unsigned upload preset `tapp_uploads`) and create Firestore document with `status: "pending"`. Redirects unauthenticated users to `/login`. |
 | `/admin` | Admin Only (`role === "admin"`) | Moderation panel: queries `status == "pending"` submissions. Single-click approve (`status: "approved"`) or delete (removes Firestore doc and Storage media). Redirects non-admins to `/`. |
 
 ## End-to-End User Journey
@@ -76,5 +77,5 @@ From the repository root:
   - `products`: Public read for `status == "approved"`; owner can read their own pending; admins can read all; authenticated users can create with `status: "pending"`; admins can update `status` or delete.
   - `users`: Authenticated user can read/write their own profile doc. Admins can view/edit roles.
   - `comments`: Public read; authenticated users can write new comments.
-- **Storage Security Rules**:
-  - Limit uploads to image MIME types (`image/jpeg`, `image/png`, `image/webp`) with maximum file size (2 MB).
+- **Image Uploads (Cloudinary)**:
+  - Product images are uploaded client-side directly to Cloudinary via an unsigned upload preset (`tapp_uploads`, cloud `r75nkzhl`), not Firebase Storage. Limit uploads to image MIME types (`image/jpeg`, `image/png`, `image/webp`) with maximum file size (2 MB), enforced client-side and via the Cloudinary preset's upload restrictions.
