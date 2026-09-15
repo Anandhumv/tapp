@@ -1,25 +1,10 @@
 "use client";
-
+import { validateEmail } from "../../lib/validateEmail";
+import { register } from "../../lib/auth";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { UserPlus, AlertCircle } from "lucide-react";
-import { auth, db } from "../../lib/firebase";
-
-function mapAuthError(code) {
-  switch (code) {
-    case "auth/email-already-in-use":
-      return "An account with this email already exists.";
-    case "auth/invalid-email":
-      return "That email address looks invalid.";
-    case "auth/weak-password":
-      return "Password must be at least 6 characters.";
-    default:
-      return "Unable to create account. Please try again.";
-  }
-}
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -27,28 +12,31 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
-    setSubmitting(true);
+
+    // 1. Check for valid format and block domain typos like gmali.com
+    const emailCheck = validateEmail(email);
+    if (!emailCheck.isValid) {
+      setError(emailCheck.error);
+      return; // Halts registration before hitting Firebase
+    }
+
+    setLoading(true);
+
     try {
-      const credential = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(credential.user, { displayName: name });
-      await setDoc(doc(db, "users", credential.user.uid), {
-        name,
-        email,
-        role: "user",
-        createdAt: serverTimestamp(),
-      });
+      // 2. Pass the trimmed, normalized email to Firebase
+      await register(emailCheck.cleanEmail, password, name);
       router.push("/");
     } catch (err) {
-      setError(mapAuthError(err.code));
+      setError(err.message.replace("Firebase: ", ""));
     } finally {
-      setSubmitting(false);
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="mx-auto max-w-md py-24 px-4">
@@ -68,7 +56,7 @@ export default function RegisterPage() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleRegister} className="space-y-5">
         <div>
           <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
             Full Name
@@ -114,11 +102,11 @@ export default function RegisterPage() {
 
         <button
           type="submit"
-          disabled={submitting}
+          disabled={loading}
           className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#c9a978] py-3 text-sm font-semibold text-black hover:bg-[#dfcfbd] transition-colors disabled:opacity-60"
         >
           <UserPlus className="h-4 w-4" />
-          {submitting ? "Creating account..." : "Register"}
+          {loading ? "Creating account..." : "Register"}
         </button>
       </form>
 
