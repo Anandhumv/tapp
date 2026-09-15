@@ -18,23 +18,23 @@ Track the daily progress of the **tapp** product directory web application.
   - [x] Wrap application routes in `client/app/layout.js`.
   - [x] Build Homepage Hero banner in `client/app/page.jsx` with headline, tagline, and CTA.
 
-- [ ] **Day 3: Static UI & Card Architecture**
-  - [ ] Create reusable `components/ProductCard.jsx` with image, name, category badge, and brief description.
-  - [ ] Populate `client/app/page.jsx` with responsive 3-column grid of dummy product data.
-  - [ ] Build static layout for dynamic route `client/app/products/[id]/page.jsx` (large image, specs, mock comments).
-  - [ ] Build static UI for `client/app/submit-product/page.jsx` (form fields and file input).
+- [x] **Day 3: Static UI & Card Architecture**
+  - [x] Create reusable `components/ProductCard.jsx` with image, name, category badge, and brief description.
+  - [x] Populate `client/app/page.jsx` with responsive 3-column grid of dummy product data.
+  - [x] Build static layout for dynamic route `client/app/products/[id]/page.jsx` (large image, specs, mock comments).
+  - [x] Build static UI for `client/app/submit-product/page.jsx` (form fields and file input).
 
-- [ ] **Day 4: Firebase Infrastructure Setup**
-  - [ ] Configure Firebase project (Auth, Cloud Firestore, Cloud Storage).
-  - [ ] Set up credentials in `client/.env.local`.
-  - [ ] Configure Firestore and Storage security rules.
+- [x] **Day 4: Firebase Infrastructure Setup**
+  - [x] Configure Firebase project `tapp-5b99f` (Auth, Cloud Firestore). Cloud Storage was intentionally swapped for Cloudinary to avoid billing — see `docs/ARCHITECTURE.md`.
+  - [x] Set up credentials in `client/.env.local`.
+  - [x] Configure Firestore security rules (`firestore.rules`, published via console).
 
-- [ ] **Day 5: Authentication & Role Gating**
-  - [ ] Implement `client/app/login/page.jsx` and `client/app/register/page.jsx` (Email/Password & Google Auth).
-  - [ ] Auto-create user doc on registration with `role: "user"`.
-  - [ ] Admin role assignment in Firestore.
-  - [ ] Wire Navbar user state, sign-out, and conditional Admin link.
-  - [ ] Protect `/submit-product` route.
+- [x] **Day 5: Authentication & Role Gating**
+  - [x] Implement `client/app/login/page.jsx` and `client/app/register/page.jsx` (Email/Password only; Google Auth not implemented — out of MVP scope per playbook stretch goals). Both enforce a strict `@gmail.com`-only policy via `lib/validateEmail.js`.
+  - [x] Auto-create user doc on registration with `role: "user"`.
+  - [x] Admin role assignment in Firestore (done manually in console).
+  - [x] Wire Navbar user state, sign-out, and conditional Admin link.
+  - [x] Protect `/submit-product` route.
 
 - [ ] **Day 6: Image Uploads & Submission Pipeline**
   - [ ] Client-side validation on `/submit-product` (<= 2 MB, `.jpg`, `.png`, `.webp`).
