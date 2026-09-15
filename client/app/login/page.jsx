@@ -6,42 +6,36 @@ import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { LogIn, AlertCircle } from "lucide-react";
 import { auth } from "../../lib/firebase";
-
-function mapAuthError(code) {
-  switch (code) {
-    case "auth/invalid-email":
-      return "That email address looks invalid.";
-    case "auth/user-not-found":
-    case "auth/invalid-credential":
-    case "auth/wrong-password":
-      return "Incorrect email or password.";
-    case "auth/too-many-requests":
-      return "Too many attempts. Please wait and try again.";
-    default:
-      return "Unable to sign in. Please try again.";
-  }
-}
+import { validateEmail } from "../../lib/validateEmail";
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
-    setSubmitting(true);
+
+    const emailCheck = validateEmail(email);
+    if (!emailCheck.isValid) {
+      setError(emailCheck.error);
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, emailCheck.cleanEmail, password);
       router.push("/");
     } catch (err) {
-      setError(mapAuthError(err.code));
+      setError(err.message.replace("Firebase: ", ""));
     } finally {
-      setSubmitting(false);
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="mx-auto max-w-md py-24 px-4">
@@ -61,7 +55,7 @@ export default function LoginPage() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleLogin} className="space-y-5">
         <div>
           <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
             Email
@@ -92,11 +86,11 @@ export default function LoginPage() {
 
         <button
           type="submit"
-          disabled={submitting}
+          disabled={loading}
           className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#c9a978] py-3 text-sm font-semibold text-black hover:bg-[#dfcfbd] transition-colors disabled:opacity-60"
         >
           <LogIn className="h-4 w-4" />
-          {submitting ? "Signing in..." : "Sign In"}
+          {loading ? "Signing in..." : "Sign In"}
         </button>
       </form>
 

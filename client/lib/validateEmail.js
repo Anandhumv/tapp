@@ -29,7 +29,7 @@ export function validateEmail(email) {
     if (TYPO_DOMAINS.includes(domain)) {
         return {
             isValid: false,
-            error: `Invalid email domain "@${domain}". Did you mean "@gmail.com"?`,
+            error: `Invalid domain '@${domain}'. Did you mean '@gmail.com'?`,
         };
     }
 
