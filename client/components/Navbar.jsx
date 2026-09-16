@@ -78,12 +78,6 @@ export default function Navbar() {
               Sign In
             </Link>
           )}
-          <Link
-            href="/submit-product"
-            className="relative group flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-black bg-[#c9a978] hover:bg-[#dfcfbd] transition-all shadow-lg shadow-[#c9a978]/20"
-          >
-            <span>+ Submit Product</span>
-          </Link>
         </div>
       </nav>
     </header>

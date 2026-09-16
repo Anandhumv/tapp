@@ -121,7 +121,7 @@ export default function Home() {
             href="/submit-product"
             className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#c9a978]/40 hover:bg-white/10 font-medium text-sm transition-all backdrop-blur-xl text-white"
           >
-            + Submit Product
+            + Add Product
           </Link>
         </div>
 
