@@ -121,8 +121,8 @@ export default function SubmitProductPage() {
 
     if (authLoading || !user) {
         return (
-            <div className="min-h-[70vh] flex items-center justify-center text-xs text-zinc-500">
-                <Loader2 className="h-5 w-5 animate-spin text-[#c9a978] mr-2" />
+            <div className="min-h-[70vh] flex items-center justify-center text-xs text-body">
+                <Loader2 className="h-5 w-5 animate-spin text-accent mr-2" />
                 Authenticating session...
             </div>
         );
@@ -131,13 +131,13 @@ export default function SubmitProductPage() {
     if (success) {
         return (
             <div className="min-h-[80vh] flex items-center justify-center px-4 pt-20">
-                <div className="w-full max-w-lg rounded-2xl bg-[#131316] border border-[#c9a978]/30 p-8 text-center shadow-2xl">
-                    <CheckCircle2 className="mx-auto h-12 w-12 text-[#c9a978] mb-4 animate-bounce" />
-                    <h2 className="text-2xl font-bold text-white mb-2">Submission Received</h2>
-                    <p className="text-sm text-zinc-400 mb-6">
+                <div className="w-full max-w-lg rounded-2xl bg-surface border border-line-hover p-8 text-center shadow-2xl">
+                    <CheckCircle2 className="mx-auto h-12 w-12 text-accent mb-4 animate-bounce" />
+                    <h2 className="font-display text-2xl font-bold text-heading mb-2">Submission Received</h2>
+                    <p className="text-sm text-body mb-6">
                         Your hardware or platform solution has been entered into the moderation queue.
                     </p>
-                    <div className="text-xs text-zinc-500">Redirecting to showcase...</div>
+                    <div className="text-xs text-body">Redirecting to showcase...</div>
                 </div>
             </div>
         );
@@ -148,34 +148,34 @@ export default function SubmitProductPage() {
             <div className="mb-8">
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-[#c9a978] transition-colors mb-4"
+                    className="inline-flex items-center gap-1 text-xs text-body hover:text-accent transition-colors mb-4"
                 >
                     <ArrowLeft className="h-3.5 w-3.5" />
                     <span>Back to directory</span>
                 </Link>
                 <div className="flex items-center gap-2 mb-1">
-                    <Sparkles className="h-4 w-4 text-[#c9a978]" />
-                    <span className="text-[11px] font-semibold uppercase tracking-widest text-[#c9a978]">
+                    <Sparkles className="h-4 w-4 text-accent" />
+                    <span className="text-[11px] font-semibold uppercase tracking-widest text-accent">
                         Curated Index
                     </span>
                 </div>
-                <h1 className="text-3xl font-bold text-white tracking-tight">
+                <h1 className="font-display text-3xl font-bold text-heading tracking-tight">
                     Submit Hardware or Platform
                 </h1>
-                <p className="mt-1 text-sm text-zinc-400">
+                <p className="mt-1 text-sm text-body">
                     List your next-generation hardware, clean-tech, or autonomous system on TAPP.
                 </p>
             </div>
 
-            <div className="mb-8 flex items-start gap-3 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-amber-200/90">
-                <AlertCircle className="h-4 w-4 shrink-0 text-amber-400 mt-0.5" />
+            <div className="mb-8 flex items-start gap-3 rounded-xl border border-amber-500/25 bg-amber-500/10 p-4 text-xs text-amber-600 dark:text-amber-300">
+                <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>
                     <strong>Review Policy:</strong> Submissions enter a <code>pending</code> status and require administrator approval before appearing in the public directory.
                 </span>
             </div>
 
             {errorMessage && (
-                <div className="mb-6 flex items-center gap-2 rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-xs text-red-400">
+                <div className="mb-6 flex items-center gap-2 rounded-xl border border-red-500/25 bg-red-500/10 p-4 text-xs text-red-500">
                     <AlertCircle className="h-4 w-4 shrink-0" />
                     <span>{errorMessage}</span>
                 </div>
@@ -184,8 +184,8 @@ export default function SubmitProductPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                            Product Title <span className="text-[#c9a978]">*</span>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                            Product Title <span className="text-accent">*</span>
                         </label>
                         <input
                             type="text"
@@ -193,13 +193,13 @@ export default function SubmitProductPage() {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             placeholder="e.g. AeroPulse Mark IV"
-                            className="w-full rounded-xl bg-[#131316] border border-white/10 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c9a978] focus:outline-none"
+                            className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                            Tagline <span className="text-[#c9a978]">*</span>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                            Tagline <span className="text-accent">*</span>
                         </label>
                         <input
                             type="text"
@@ -207,20 +207,20 @@ export default function SubmitProductPage() {
                             value={tagline}
                             onChange={(e) => setTagline(e.target.value)}
                             placeholder="e.g. Solid-state neural navigation drone"
-                            className="w-full rounded-xl bg-[#131316] border border-white/10 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c9a978] focus:outline-none"
+                            className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                            Category <span className="text-[#c9a978]">*</span>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                            Category <span className="text-accent">*</span>
                         </label>
                         <select
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
-                            className="w-full rounded-xl bg-[#131316] border border-white/10 px-4 py-2.5 text-sm text-white focus:border-[#c9a978] focus:outline-none"
+                            className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading focus:border-line-hover focus:outline-none"
                         >
                             {CATEGORIES.map((cat) => (
                                 <option key={cat} value={cat}>
@@ -231,13 +231,13 @@ export default function SubmitProductPage() {
                     </div>
 
                     <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                            Pricing Model <span className="text-[#c9a978]">*</span>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                            Pricing Model <span className="text-accent">*</span>
                         </label>
                         <select
                             value={pricing}
                             onChange={(e) => setPricing(e.target.value)}
-                            className="w-full rounded-xl bg-[#131316] border border-white/10 px-4 py-2.5 text-sm text-white focus:border-[#c9a978] focus:outline-none"
+                            className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading focus:border-line-hover focus:outline-none"
                         >
                             {PRICING_MODELS.map((p) => (
                                 <option key={p} value={p}>
@@ -250,8 +250,8 @@ export default function SubmitProductPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                            Official Website URL <span className="text-[#c9a978]">*</span>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                            Official Website URL <span className="text-accent">*</span>
                         </label>
                         <input
                             type="url"
@@ -259,27 +259,27 @@ export default function SubmitProductPage() {
                             value={websiteUrl}
                             onChange={(e) => setWebsiteUrl(e.target.value)}
                             placeholder="https://company.com"
-                            className="w-full rounded-xl bg-[#131316] border border-white/10 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c9a978] focus:outline-none"
+                            className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                            Video / Demo URL <span className="text-zinc-500">(Optional)</span>
+                        <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                            Video / Demo URL <span className="text-body">(Optional)</span>
                         </label>
                         <input
                             type="url"
                             value={demoUrl}
                             onChange={(e) => setDemoUrl(e.target.value)}
                             placeholder="https://youtube.com/watch?v=..."
-                            className="w-full rounded-xl bg-[#131316] border border-white/10 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c9a978] focus:outline-none"
+                            className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
                 </div>
 
                 <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                        Detailed Overview & Specifications <span className="text-[#c9a978]">*</span>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                        Detailed Overview & Specifications <span className="text-accent">*</span>
                     </label>
                     <textarea
                         required
@@ -287,18 +287,18 @@ export default function SubmitProductPage() {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="Outline architecture, hardware specifications, and core differentiators..."
-                        className="w-full rounded-xl bg-[#131316] border border-white/10 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c9a978] focus:outline-none"
+                        className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                     />
                 </div>
 
                 <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                        Showcase Media (Hero Image) <span className="text-[#c9a978]">*</span>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                        Showcase Media (Hero Image) <span className="text-accent">*</span>
                     </label>
-                    <div className="relative border-2 border-dashed border-white/10 rounded-2xl p-6 bg-[#131316]/50 hover:border-[#c9a978]/40 transition-colors">
+                    <div className="relative border-2 border-dashed border-line rounded-2xl p-6 bg-surface/50 hover:border-line-hover transition-colors">
                         {imagePreview ? (
                             <div className="space-y-4">
-                                <div className="relative w-full h-64 rounded-xl overflow-hidden border border-white/10">
+                                <div className="relative w-full h-64 rounded-xl overflow-hidden border border-line">
                                     <img
                                         src={imagePreview}
                                         alt="Preview"
@@ -306,12 +306,12 @@ export default function SubmitProductPage() {
                                     />
                                 </div>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-xs text-zinc-400 truncate max-w-xs">
+                                    <span className="text-xs text-body truncate max-w-xs">
                                         {imageFile?.name}
                                     </span>
                                     <label
                                         htmlFor="file-upload"
-                                        className="cursor-pointer text-xs font-semibold text-[#c9a978] hover:underline"
+                                        className="cursor-pointer text-xs font-semibold text-accent hover:underline"
                                     >
                                         Change Image
                                     </label>
@@ -322,13 +322,13 @@ export default function SubmitProductPage() {
                                 htmlFor="file-upload"
                                 className="cursor-pointer flex flex-col items-center justify-center py-6"
                             >
-                                <div className="p-3 rounded-full bg-white/5 border border-white/10 text-[#c9a978] mb-3">
+                                <div className="p-3 rounded-full bg-accent/10 border border-line text-accent mb-3">
                                     <UploadCloud className="h-6 w-6" />
                                 </div>
-                                <p className="text-sm font-medium text-white mb-1">
+                                <p className="text-sm font-medium text-heading mb-1">
                                     Click to upload showcase image
                                 </p>
-                                <p className="text-xs text-zinc-500">PNG, JPG, or WEBP up to 5MB</p>
+                                <p className="text-xs text-body">PNG, JPG, or WEBP up to 5MB</p>
                             </label>
                         )}
                         <input
@@ -344,7 +344,7 @@ export default function SubmitProductPage() {
                 <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#c9a978] py-3.5 text-sm font-semibold text-black hover:bg-[#dfcfbd] transition-all disabled:opacity-50 shadow-lg shadow-[#c9a978]/20"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent to-accent-strong py-3.5 text-sm font-semibold text-black hover:brightness-110 transition-all disabled:opacity-50 shadow-lg shadow-accent/20"
                 >
                     {submitting ? (
                         <>

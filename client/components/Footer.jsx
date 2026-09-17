@@ -1,30 +1,50 @@
 import Link from "next/link";
-import { Sparkles, Heart, Globe } from "lucide-react";
+import { Sparkles, Heart, Globe, ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/10 bg-[#07090d]/90 backdrop-blur-md text-[#a89a8c] text-sm">
+    <footer className="w-full border-t border-line bg-bg-alt text-body text-sm">
+      {/* Bottom CTA Banner */}
+      <div className="relative overflow-hidden border-b border-line">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[280px] bg-accent/15 blur-[130px] rounded-full pointer-events-none" />
+        <div className="relative mx-auto max-w-3xl px-6 py-20 text-center">
+          <span className="font-script text-3xl sm:text-4xl text-accent block mb-3">
+            Let&apos;s create something extraordinary
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold text-heading tracking-tight mb-8">
+            Ready to showcase your breakthrough?
+          </h2>
+          <Link
+            href="/submit-product"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-accent to-accent-strong text-black font-semibold text-sm hover:brightness-110 transition-all shadow-xl shadow-accent/20"
+          >
+            + Add Product
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Col */}
           <div className="md:col-span-1 space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-[#dfcfbd] to-[#c9a978] text-[#0a0c10]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-accent-glow to-accent text-black">
                 <Sparkles className="h-4 w-4 fill-current" />
               </div>
-              <span className="text-lg font-bold tracking-tight text-[#f4ede4]">
-                tapp<span className="text-[#c9a978]">.</span>
+              <span className="font-display text-lg font-bold tracking-tight text-heading">
+                tapp<span className="text-accent">.</span>
               </span>
             </Link>
-            <p className="text-xs leading-relaxed text-[#a89a8c]">
+            <p className="text-xs leading-relaxed text-body">
               The community showcase and discovery platform for next-generation hardware, CleanTech innovations, and software craft.
             </p>
-            <div className="flex items-center gap-3 text-[#a89a8c]">
+            <div className="flex items-center gap-3 text-body">
               <a
                 href="https://github.com/Anandhumv/tapp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-heading transition-colors"
                 aria-label="GitHub"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -35,7 +55,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-heading transition-colors"
                 aria-label="X / Twitter"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -44,7 +64,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://tapp.local"
-                className="hover:text-white transition-colors"
+                className="hover:text-heading transition-colors"
                 aria-label="Website"
               >
                 <Globe className="h-4 w-4" />
@@ -54,27 +74,27 @@ export default function Footer() {
 
           {/* Categories Col */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#f4ede4] mb-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-heading mb-3">
               Categories
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/?category=CleanTech" className="hover:text-white transition-colors">
+                <Link href="/?category=CleanTech" className="hover:text-heading transition-colors">
                   CleanTech
                 </Link>
               </li>
               <li>
-                <Link href="/?category=Hardware" className="hover:text-white transition-colors">
+                <Link href="/?category=Hardware" className="hover:text-heading transition-colors">
                   Hardware & Robotics
                 </Link>
               </li>
               <li>
-                <Link href="/?category=SaaS" className="hover:text-white transition-colors">
+                <Link href="/?category=SaaS" className="hover:text-heading transition-colors">
                   SaaS & Productivity
                 </Link>
               </li>
               <li>
-                <Link href="/?category=AI" className="hover:text-white transition-colors">
+                <Link href="/?category=AI" className="hover:text-heading transition-colors">
                   Artificial Intelligence
                 </Link>
               </li>
@@ -83,27 +103,27 @@ export default function Footer() {
 
           {/* Platform Col */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#f4ede4] mb-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-heading mb-3">
               Platform
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link href="/" className="hover:text-heading transition-colors">
                   Browse Catalog
                 </Link>
               </li>
               <li>
-                <Link href="/submit-product" className="hover:text-white transition-colors">
+                <Link href="/submit-product" className="hover:text-heading transition-colors">
                   Submit a Product
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="hover:text-white transition-colors">
+                <Link href="/admin" className="hover:text-heading transition-colors">
                   Admin Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/login" className="hover:text-white transition-colors">
+                <Link href="/login" className="hover:text-heading transition-colors">
                   Sign In
                 </Link>
               </li>
@@ -112,18 +132,18 @@ export default function Footer() {
 
           {/* Status & Tech Col */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#f4ede4] mb-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-heading mb-3">
               Infrastructure
             </h4>
             <div className="space-y-3 text-xs">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-emerald-400">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-emerald-500">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
                 </span>
                 <span className="font-medium">All systems operational</span>
               </div>
-              <p className="text-zinc-500 text-[11px] leading-relaxed">
+              <p className="text-body text-[11px] leading-relaxed">
                 Powered by Next.js 16 App Router, Tailwind CSS, and Firebase Cloud Infrastructure.
               </p>
             </div>
@@ -131,13 +151,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between border-t border-white/10 pt-6 text-xs text-zinc-500 gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between border-t border-line pt-6 text-xs text-body gap-4">
           <p>© {new Date().getFullYear()} tapp. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-zinc-400 transition-colors">
+            <Link href="/privacy" className="hover:text-heading transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-zinc-400 transition-colors">
+            <Link href="/terms" className="hover:text-heading transition-colors">
               Terms of Service
             </Link>
             <span className="flex items-center gap-1">

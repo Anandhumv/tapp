@@ -156,38 +156,36 @@ export default function ServicesPage() {
       {/* Hero Header */}
       <section className="text-center relative pt-8 pb-16 overflow-hidden">
         {/* Ambient Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[300px] bg-[#c9a978]/10 blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[300px] bg-accent/15 blur-[130px] rounded-full pointer-events-none" />
 
         {/* Pill Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#c9a978]/10 border border-[#c9a978]/20 text-[#c9a978] text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-line text-accent text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md">
           <Sparkles className="w-3.5 h-3.5" />
           <span>Enterprise Services & Bespoke Engineering</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight max-w-4xl mx-auto mb-6">
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-heading leading-tight max-w-4xl mx-auto mb-6">
           Architecting the Future of{" "}
-          <span className="bg-gradient-to-r from-white via-zinc-200 to-[#c9a978] bg-clip-text text-transparent">
-            Hardware & Deep-Tech
-          </span>
+          <em className="italic text-accent">Hardware & Deep-Tech</em>
         </h1>
 
-        <p className="text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-          From exotic neural silicon procurement to turnkey systems integration, we empower 
+        <p className="text-sm sm:text-base text-body max-w-2xl mx-auto leading-relaxed">
+          From exotic neural silicon procurement to turnkey systems integration, we empower
           visionary teams with high-touch technical acceleration and elite market distribution.
         </p>
       </section>
 
       {/* Services Bento Grid */}
       <section className="mb-24">
-        <div className="flex items-end justify-between mb-8 border-b border-white/10 pb-4">
+        <div className="flex items-end justify-between mb-8 border-b border-line pb-4">
           <div>
-            <span className="text-[11px] uppercase tracking-widest text-[#c9a978] font-semibold">
+            <span className="text-[11px] uppercase tracking-widest text-accent font-semibold">
               Capabilities
             </span>
-            <h2 className="text-2xl font-bold text-white mt-1">Core Service Offerings</h2>
+            <h2 className="font-display text-2xl font-bold text-heading mt-1">Core Service Offerings</h2>
           </div>
-          <span className="text-xs text-zinc-500">4 Specialized Practices</span>
+          <span className="text-xs text-body">4 Specialized Practices</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -196,29 +194,29 @@ export default function ServicesPage() {
             return (
               <div
                 key={svc.id}
-                className="group relative rounded-3xl bg-[#131316] border border-white/10 hover:border-[#c9a978]/40 p-8 flex flex-col justify-between transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-[#c9a978]/5"
+                className="group relative rounded-3xl bg-surface border border-line hover:border-line-hover p-8 flex flex-col justify-between transition-all duration-300 shadow-xl hover:shadow-2xl"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-[#c9a978]/10 border border-[#c9a978]/20 text-[#c9a978] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-line text-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-6 h-6" strokeWidth={1.5} />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 group-hover:text-[#c9a978] transition-colors">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-body group-hover:text-accent transition-colors">
                       {svc.tagline}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#c9a978] transition-colors">
+                  <h3 className="text-xl font-bold text-heading mb-2 group-hover:text-accent transition-colors">
                     {svc.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-body leading-relaxed mb-6">
                     {svc.description}
                   </p>
 
-                  <div className="space-y-2 mb-8 pt-4 border-t border-white/5">
+                  <div className="space-y-2 mb-8 pt-4 border-t border-line">
                     {svc.highlights.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-zinc-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#c9a978] shrink-0" />
+                      <div key={idx} className="flex items-center gap-2 text-xs text-heading/90">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -229,10 +227,10 @@ export default function ServicesPage() {
                   <button
                     type="button"
                     onClick={() => handleServiceSelect(svc.title)}
-                    className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-[#c9a978]/40 hover:bg-white/10 text-xs font-semibold text-white transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-bg-alt border border-line hover:border-line-hover text-xs font-semibold text-heading transition-all cursor-pointer"
                   >
                     <span>Request This Practice</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#c9a978]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-accent" />
                   </button>
                 </div>
               </div>
@@ -243,35 +241,35 @@ export default function ServicesPage() {
 
       {/* Interactive Consultation Form Section */}
       <section ref={formRef} className="max-w-3xl mx-auto scroll-mt-28">
-        <div className="relative rounded-3xl bg-gradient-to-b from-[#161619] to-[#101013] border border-white/10 p-6 sm:p-10 shadow-2xl overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#c9a978]/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="relative rounded-3xl bg-surface border border-line p-6 sm:p-10 shadow-2xl overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-accent/15 blur-[100px] rounded-full pointer-events-none" />
 
           <div className="text-center mb-8">
-            <span className="inline-block text-[11px] uppercase tracking-widest text-[#c9a978] font-bold mb-2">
+            <span className="inline-block text-[11px] uppercase tracking-widest text-accent font-bold mb-2">
               Inquiry & Advisory
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-heading tracking-tight">
               Request a Consultation
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mx-auto mt-2">
+            <p className="text-xs sm:text-sm text-body max-w-lg mx-auto mt-2">
               Connect directly with our engineering and curation team to review scopes, timelines, and tailored allocations.
             </p>
           </div>
 
           {/* Success Banner */}
           {success && (
-            <div className="mb-8 p-6 rounded-2xl bg-[#c9a978]/10 border border-[#c9a978]/30 text-center animate-in fade-in zoom-in duration-300">
-              <div className="w-12 h-12 rounded-full bg-[#c9a978]/20 text-[#c9a978] mx-auto flex items-center justify-center mb-3">
+            <div className="mb-8 p-6 rounded-2xl bg-accent/10 border border-line-hover text-center animate-in fade-in zoom-in duration-300">
+              <div className="w-12 h-12 rounded-full bg-accent/20 text-accent mx-auto flex items-center justify-center mb-3">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-base font-bold text-white">Inquiry Dispatched Successfully</h3>
-              <p className="text-xs text-zinc-300 mt-1 max-w-md mx-auto leading-relaxed">
+              <h3 className="text-base font-bold text-heading">Inquiry Dispatched Successfully</h3>
+              <p className="text-xs text-body mt-1 max-w-md mx-auto leading-relaxed">
                 Thank you. Our executive team has received your consultation request and will reach out via email within 24 hours.
               </p>
               <button
                 type="button"
                 onClick={() => setSuccess(false)}
-                className="mt-4 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors"
+                className="mt-4 px-4 py-2 rounded-lg bg-bg-alt hover:brightness-95 text-xs font-semibold text-heading transition-colors"
               >
                 Send Another Inquiry
               </button>
@@ -280,8 +278,8 @@ export default function ServicesPage() {
 
           {/* Error Banner */}
           {errorMessage && (
-            <div className="mb-6 flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs">
-              <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+            <div className="mb-6 flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/25 text-red-500 text-xs">
+              <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMessage}</span>
             </div>
           )}
@@ -291,11 +289,11 @@ export default function ServicesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
-                    Full Name <span className="text-[#c9a978]">*</span>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                    Full Name <span className="text-accent">*</span>
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-body">
                       <User className="w-4 h-4" />
                     </div>
                     <input
@@ -304,18 +302,18 @@ export default function ServicesPage() {
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="Dr. Evelyn Stone"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#1c1c20] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#c9a978] focus:ring-1 focus:ring-[#c9a978]/40 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Organization / Company */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
-                    Organization / Lab <span className="text-[#c9a978]">*</span>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                    Organization / Lab <span className="text-accent">*</span>
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-body">
                       <Building2 className="w-4 h-4" />
                     </div>
                     <input
@@ -324,7 +322,7 @@ export default function ServicesPage() {
                       value={organization}
                       onChange={(e) => setOrganization(e.target.value)}
                       placeholder="OmniDynamics Labs"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#1c1c20] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#c9a978] focus:ring-1 focus:ring-[#c9a978]/40 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                     />
                   </div>
                 </div>
@@ -333,11 +331,11 @@ export default function ServicesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {/* Email */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
-                    Corporate / Authenticated Email <span className="text-[#c9a978]">*</span>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                    Corporate / Authenticated Email <span className="text-accent">*</span>
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-body">
                       <Mail className="w-4 h-4" />
                     </div>
                     <input
@@ -346,23 +344,23 @@ export default function ServicesPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="evelyn@gmail.com"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#1c1c20] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#c9a978] focus:ring-1 focus:ring-[#c9a978]/40 transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                     />
                   </div>
-                  <span className="text-[10px] text-zinc-500 mt-1 block">
+                  <span className="text-[10px] text-body mt-1 block">
                     Adheres to TAPP verified policy (supports @gmail.com accounts).
                   </span>
                 </div>
 
                 {/* Service of Interest Dropdown */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
                     Service of Interest
                   </label>
                   <select
                     value={selectedService}
                     onChange={(e) => setSelectedService(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-[#1c1c20] border border-white/10 text-sm text-white focus:outline-none focus:border-[#c9a978] focus:ring-1 focus:ring-[#c9a978]/40 transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                   >
                     <option value="Bespoke Hardware Sourcing">Bespoke Hardware Sourcing</option>
                     <option value="Architecture & Systems Integration">Architecture & Systems Integration</option>
@@ -375,11 +373,11 @@ export default function ServicesPage() {
 
               {/* Project Scope / Overview */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
-                  Project Scope / Overview <span className="text-[#c9a978]">*</span>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
+                  Project Scope / Overview <span className="text-accent">*</span>
                 </label>
                 <div className="relative">
-                  <div className="absolute top-3.5 left-3.5 pointer-events-none text-zinc-500">
+                  <div className="absolute top-3.5 left-3.5 pointer-events-none text-body">
                     <MessageSquareText className="w-4 h-4" />
                   </div>
                   <textarea
@@ -388,7 +386,7 @@ export default function ServicesPage() {
                     value={projectScope}
                     onChange={(e) => setProjectScope(e.target.value)}
                     placeholder="Describe your technical specifications, estimated volumes, target timelines, or strategic advisory goals..."
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#1c1c20] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#c9a978] focus:ring-1 focus:ring-[#c9a978]/40 transition-all"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                   />
                 </div>
               </div>
@@ -398,7 +396,7 @@ export default function ServicesPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#c9a978] hover:bg-[#dfcfbd] text-black font-semibold text-xs uppercase tracking-wider shadow-xl shadow-[#c9a978]/20 transition-all cursor-pointer active:scale-98 disabled:opacity-50"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-accent to-accent-strong hover:brightness-110 text-black font-semibold text-xs uppercase tracking-wider shadow-xl shadow-accent/20 transition-all cursor-pointer active:scale-98 disabled:opacity-50"
                 >
                   {submitting ? (
                     <>

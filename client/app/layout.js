@@ -1,12 +1,27 @@
-import { Space_Grotesk } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans, Caveat } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { AuthProvider } from "../lib/AuthContext";
 import "./globals.css";
 
-// Configure the Space Grotesk Google font
-const spaceGrotesk = Space_Grotesk({
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
+});
+
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-jakarta",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-caveat",
 });
 
 // Set page metadata
@@ -17,22 +32,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark" data-scroll-behavior="smooth">
-      <body
-        className={`${spaceGrotesk.className} min-h-screen bg-[#0c0c0e] text-[#fafafa] selection:bg-[#c9a978]/30 selection:text-[#c9a978] antialiased`}
-      >
-        <AuthProvider>
-          <Navbar />
-          <main>{children}</main>
-          <footer className="border-t border-white/10 py-12 px-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-            <div className="flex items-center gap-3">
-              <span className="font-bold text-zinc-300">TAPP</span>
-              <span>—</span>
-              <span>Luxury Hardware & Clean-Tech Ecosystem</span>
-            </div>
-            <div>© 2026 TAPP Inc. All rights reserved.</div>
-          </footer>
-        </AuthProvider>
+    <html
+      lang="en"
+      className={`${playfair.variable} ${jakarta.variable} ${caveat.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen bg-bg text-heading font-sans selection:bg-accent/30 selection:text-accent antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <AuthProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

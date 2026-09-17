@@ -40,24 +40,24 @@ export default function LoginPage() {
   return (
     <div className="mx-auto max-w-md py-24 px-4">
       <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        <h1 className="font-display text-2xl font-bold tracking-tight text-heading sm:text-3xl">
           Welcome Back
         </h1>
-        <p className="mt-1 text-sm text-zinc-400">
+        <p className="mt-1 text-sm text-body">
           Sign in to submit products and track your listings.
         </p>
       </div>
 
       {error && (
-        <div className="mb-6 flex items-start gap-3 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-xs text-red-300">
-          <AlertCircle className="h-4 w-4 shrink-0 text-red-400 mt-0.5" />
+        <div className="mb-6 flex items-start gap-3 rounded-lg border border-red-500/25 bg-red-500/10 p-4 text-xs text-red-500">
+          <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
           <span>{error}</span>
         </div>
       )}
 
       <form onSubmit={handleLogin} className="space-y-5">
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
             Email
           </label>
           <input
@@ -66,12 +66,12 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full rounded-lg border border-white/10 bg-[#131316] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c9a978]/50 focus:outline-none focus:ring-1 focus:ring-[#c9a978]/50"
+            className="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none focus:ring-1 focus:ring-accent/40"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
             Password
           </label>
           <input
@@ -80,23 +80,23 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
-            className="w-full rounded-lg border border-white/10 bg-[#131316] px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c9a978]/50 focus:outline-none focus:ring-1 focus:ring-[#c9a978]/50"
+            className="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none focus:ring-1 focus:ring-accent/40"
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#c9a978] py-3 text-sm font-semibold text-black hover:bg-[#dfcfbd] transition-colors disabled:opacity-60"
+          className="w-full flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent to-accent-strong py-3 text-sm font-semibold text-black hover:brightness-110 transition-all disabled:opacity-60"
         >
           <LogIn className="h-4 w-4" />
           {loading ? "Signing in..." : "Sign In"}
         </button>
       </form>
 
-      <p className="mt-6 text-center text-xs text-zinc-500">
+      <p className="mt-6 text-center text-xs text-body">
         Don&apos;t have an account?{" "}
-        <Link href="/register" className="text-[#c9a978] hover:underline">
+        <Link href="/register" className="text-accent hover:underline">
           Register
         </Link>
       </p>

@@ -1,61 +1,101 @@
 @import "tailwindcss";
 
+/* Class-based dark mode for Tailwind v4 (driven by next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #0a0c10;
-  --foreground: #f4ede4;
-  --muted: #a89a8c;
-  --champagne: #c9a978;
+  color-scheme: light;
+
+  /* ---- Light Mode: Luxury Ivory / Warm Alabaster ---- */
+  --color-bg: #fbf9f5;
+  --color-bg-alt: #f4efe6;
+  --color-surface: #ffffff;
+  --color-surface-translucent: rgba(255, 255, 255, 0.75);
+
+  --color-accent: #9e7232;
+  --color-accent-strong: #7a5520;
+  --color-accent-glow: #c49751;
+
+  --color-heading: #1b1816;
+  --color-body: #615b55;
+
+  --color-line: rgba(196, 151, 81, 0.2);
+  --color-line-hover: rgba(122, 85, 32, 0.4);
+
+  --shadow-ambient: 0 30px 60px -20px rgba(122, 85, 32, 0.15);
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* ---- Dark Mode: Deep Obsidian / Charcoal ---- */
+  --color-bg: #0d0d11;
+  --color-bg-alt: #121217;
+  --color-surface: #17171e;
+  --color-surface-translucent: rgba(23, 23, 30, 0.75);
+
+  --color-accent: #e5b869;
+  --color-accent-strong: #c49751;
+  --color-accent-glow: #966e30;
+
+  --color-heading: #f5f4f0;
+  --color-body: #9e9ca3;
+
+  --color-line: rgba(197, 159, 81, 0.15);
+  --color-line-hover: rgba(229, 184, 105, 0.4);
+
+  --shadow-ambient: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--color-bg);
+  --color-bg-alt: var(--color-bg-alt);
+  --color-surface: var(--color-surface);
+  --color-surface-translucent: var(--color-surface-translucent);
+
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-glow: var(--color-accent-glow);
+
+  --color-heading: var(--color-heading);
+  --color-body: var(--color-body);
+
+  --color-line: var(--color-line);
+  --color-line-hover: var(--color-line-hover);
+
+  --font-display: var(--font-playfair), "Georgia", serif;
+  --font-sans: var(--font-jakarta), "Segoe UI", sans-serif;
+  --font-script: var(--font-caveat), cursive;
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--color-bg);
+  color: var(--color-heading);
   overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-.home-video-backdrop {
-  transform: scale(1.04);
-  transform-origin: center;
-  filter: saturate(1.1) contrast(1.08);
-  animation: videoBackdropBreath 22s ease-in-out infinite;
-}
-
-@keyframes videoBackdropBreath {
-  0%, 100% {
-    transform: scale(1.04);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* Luxury Watermark Typography on Off-Black */
+/* Luxury Watermark Typography */
 .watermark-text {
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-display);
   letter-spacing: 0.18em;
-  background: linear-gradient(180deg, rgba(235, 222, 207, 0.42) 0%, rgba(200, 180, 160, 0.1) 100%);
+  background: linear-gradient(180deg, rgba(197, 159, 81, 0.42) 0%, rgba(200, 180, 160, 0.08) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 80px rgba(201, 169, 120, 0.08);
 }
 
-/* Floating Glass Pill for Off-Black */
+/* Floating Glass Pill */
 .glass-pill {
-  background: rgba(255, 255, 255, 0.07);
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-ambient), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* Horizontal Card Hover */
@@ -64,31 +104,33 @@ body {
 }
 .preview-card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(201, 169, 120, 0.2);
+  box-shadow: var(--shadow-ambient), 0 0 30px rgba(201, 169, 120, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-video-backdrop {
-    animation: none;
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-/* Custom Scrollbar for Off-Black */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0c10;
+  background: var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e222d;
+  background: var(--color-line-hover);
   border-radius: 9999px;
-  border: 2px solid #0a0c10;
+  border: 2px solid var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #323847;
+  background: var(--color-accent-glow);
 }

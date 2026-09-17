@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ArrowLeft, MessageSquare, Send, ShieldCheck, Calendar, User } from "lucide-react";
 
-export default function ProductDetailPage({ params }) {
+export default async function ProductDetailPage({ params }) {
+    const { id } = await params;
+
     // Placeholder mock data simulating fetched product by dynamic ID
     const product = {
-        id: params.id,
+        id,
         name: "SolarGrid Hybrid Inverter",
         category: "CleanTech",
         tagline: "Bifacial solar management with smart battery bank cutover",
@@ -39,11 +41,11 @@ export default function ProductDetailPage({ params }) {
     ];
 
     return (
-        <div className="space-y-10">
+        <div className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-10">
             {/* Back to Products Navigation */}
             <Link
                 href="/"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-body hover:text-accent transition-colors"
             >
                 <ArrowLeft className="h-4 w-4" />
                 <span>Back to All Products</span>
@@ -53,7 +55,7 @@ export default function ProductDetailPage({ params }) {
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
                 {/* Left Column: Product Media Preview */}
                 <div className="lg:col-span-7 space-y-4">
-                    <div className="overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50">
+                    <div className="overflow-hidden rounded-xl border border-line bg-surface">
                         <img
                             src={product.imageUrl}
                             alt={product.name}
@@ -61,13 +63,13 @@ export default function ProductDetailPage({ params }) {
                         />
                     </div>
 
-                    <div className="flex items-center justify-between rounded-lg border border-neutral-800 bg-neutral-900/30 p-4 text-xs text-neutral-400">
+                    <div className="flex items-center justify-between rounded-lg border border-line bg-surface p-4 text-xs text-body">
                         <div className="flex items-center gap-2">
-                            <ShieldCheck className="h-4 w-4 text-emerald-400" />
+                            <ShieldCheck className="h-4 w-4 text-emerald-500" />
                             <span>Verified Directory Listing</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Calendar className="h-4 w-4 text-neutral-500" />
+                            <Calendar className="h-4 w-4 text-body" />
                             <span>Added {product.submittedAt}</span>
                         </div>
                     </div>
@@ -76,43 +78,43 @@ export default function ProductDetailPage({ params }) {
                 {/* Right Column: Title, Description, and Specs Table */}
                 <div className="lg:col-span-5 space-y-6">
                     <div>
-                        <span className="inline-block rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">
+                        <span className="inline-block rounded-full border border-line-hover bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
                             {product.category}
                         </span>
-                        <h1 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                        <h1 className="font-display mt-3 text-2xl font-bold tracking-tight text-heading sm:text-3xl">
                             {product.name}
                         </h1>
-                        <p className="mt-1 text-sm font-medium text-neutral-300">
+                        <p className="mt-1 text-sm font-medium text-body">
                             {product.tagline}
                         </p>
                     </div>
 
-                    <p className="text-sm leading-relaxed text-neutral-400">
+                    <p className="text-sm leading-relaxed text-body">
                         {product.description}
                     </p>
 
                     {/* Specifications Table */}
-                    <div className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-4">
-                        <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3">
+                    <div className="rounded-xl border border-line bg-surface p-4">
+                        <h3 className="text-xs font-semibold uppercase tracking-wider text-body mb-3">
                             Technical Specifications
                         </h3>
-                        <div className="divide-y divide-neutral-800 text-xs">
+                        <div className="divide-y divide-line text-xs">
                             {product.specs.map((spec) => (
                                 <div key={spec.label} className="flex justify-between py-2">
-                                    <span className="text-neutral-400">{spec.label}</span>
-                                    <span className="font-medium text-neutral-200">{spec.value}</span>
+                                    <span className="text-body">{spec.label}</span>
+                                    <span className="font-medium text-heading">{spec.value}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Direct CTA Box */}
-                    <div className="rounded-xl border border-neutral-800 bg-neutral-900/80 p-5 space-y-3">
-                        <h4 className="text-sm font-semibold text-white">Interested in this product?</h4>
-                        <p className="text-xs text-neutral-400">
+                    <div className="rounded-xl border border-line bg-surface p-5 space-y-3">
+                        <h4 className="text-sm font-semibold text-heading">Interested in this product?</h4>
+                        <p className="text-xs text-body">
                             Request formal pricing, technical datasheets, or schedule a direct consultation.
                         </p>
-                        <button className="w-full rounded-lg bg-blue-600 py-2.5 text-xs font-semibold text-white hover:bg-blue-500 transition-colors">
+                        <button className="w-full rounded-lg bg-gradient-to-r from-accent to-accent-strong py-2.5 text-xs font-semibold text-black hover:brightness-110 transition-all">
                             Request Supplier Contact / Quote
                         </button>
                     </div>
@@ -120,25 +122,25 @@ export default function ProductDetailPage({ params }) {
             </div>
 
             {/* Discussion & Inquiries Section */}
-            <section className="border-t border-neutral-800 pt-10 space-y-6 max-w-3xl">
+            <section className="border-t border-line pt-10 space-y-6 max-w-3xl">
                 <div className="flex items-center gap-2">
-                    <MessageSquare className="h-5 w-5 text-blue-400" />
-                    <h2 className="text-lg font-bold text-white">Community Inquiries & Feedback</h2>
-                    <span className="ml-2 rounded-full bg-neutral-800 px-2 py-0.5 text-xs text-neutral-400">
+                    <MessageSquare className="h-5 w-5 text-accent" />
+                    <h2 className="font-display text-lg font-bold text-heading">Community Inquiries & Feedback</h2>
+                    <span className="ml-2 rounded-full bg-bg-alt border border-line px-2 py-0.5 text-xs text-body">
                         {dummyComments.length}
                     </span>
                 </div>
 
                 {/* Comment Input Box */}
-                <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-4 space-y-3">
+                <div className="rounded-xl border border-line bg-surface p-4 space-y-3">
                     <textarea
                         rows="3"
                         placeholder="Ask a question about deployment, specs, or compatibility..."
-                        className="w-full resize-none rounded-lg border border-neutral-800 bg-neutral-950 p-3 text-sm text-neutral-200 placeholder-neutral-500 focus:border-blue-500 focus:outline-none"
+                        className="w-full resize-none rounded-lg border border-line bg-bg-alt p-3 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none focus:ring-1 focus:ring-accent/40"
                     ></textarea>
                     <div className="flex justify-between items-center">
-                        <span className="text-xs text-neutral-500">Posting as Guest User</span>
-                        <button className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-blue-500 transition-colors">
+                        <span className="text-xs text-body">Posting as Guest User</span>
+                        <button className="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-accent to-accent-strong px-4 py-1.5 text-xs font-medium text-black hover:brightness-110 transition-all">
                             <Send className="h-3.5 w-3.5" />
                             <span>Post Inquiry</span>
                         </button>
@@ -150,16 +152,16 @@ export default function ProductDetailPage({ params }) {
                     {dummyComments.map((comment) => (
                         <div
                             key={comment.id}
-                            className="rounded-lg border border-neutral-800/80 bg-neutral-900/30 p-4 space-y-1.5"
+                            className="rounded-lg border border-line bg-surface p-4 space-y-1.5"
                         >
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-neutral-200 flex items-center gap-1.5">
-                                    <User className="h-3.5 w-3.5 text-neutral-500" />
+                                <span className="font-semibold text-heading flex items-center gap-1.5">
+                                    <User className="h-3.5 w-3.5 text-body" />
                                     {comment.author}
                                 </span>
-                                <span className="text-neutral-500">{comment.date}</span>
+                                <span className="text-body">{comment.date}</span>
                             </div>
-                            <p className="text-sm text-neutral-400">{comment.text}</p>
+                            <p className="text-sm text-body">{comment.text}</p>
                         </div>
                     ))}
                 </div>

@@ -122,8 +122,8 @@ export default function ProfilePage() {
   if (authLoading || (loadingData && !user)) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center gap-3 pt-24">
-        <Loader2 className="w-7 h-7 animate-spin text-[#c9a978]" />
-        <p className="text-xs uppercase tracking-widest text-zinc-400">Loading profile...</p>
+        <Loader2 className="w-7 h-7 animate-spin text-accent" />
+        <p className="text-xs uppercase tracking-widest text-body">Loading profile...</p>
       </div>
     );
   }
@@ -145,7 +145,7 @@ export default function ProfilePage() {
       <div className="mb-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-[#c9a978] transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-medium text-body hover:text-accent transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Directory</span>
@@ -153,33 +153,33 @@ export default function ProfilePage() {
       </div>
 
       {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#18181c] to-[#121215] border border-white/10 p-6 sm:p-8 shadow-2xl mb-8">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#c9a978]/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl bg-surface border border-line p-6 sm:p-8 shadow-2xl mb-8">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-accent/15 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="flex items-center gap-5">
             {/* Avatar Pill */}
-            <div className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#c9a978] to-[#8d6f3e] text-black font-bold text-xl sm:text-2xl shadow-xl ring-4 ring-[#18181c]">
+            <div className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-accent to-accent-strong text-black font-bold text-xl sm:text-2xl shadow-xl ring-4 ring-surface">
               {initials}
-              <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-[#121215]" />
+              <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-surface" />
             </div>
 
             <div>
               <div className="flex items-center gap-3">
-                <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+                <h1 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-heading">
                   {fullName || "Verified Member"}
                 </h1>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#c9a978]/15 border border-[#c9a978]/30 text-[#c9a978]">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent/15 border border-line-hover text-accent">
                   <Shield className="w-3 h-3" />
                   {userRole}
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-zinc-400 mt-1 flex items-center gap-2">
+              <p className="text-xs sm:text-sm text-body mt-1 flex items-center gap-2">
                 <span>{user.email}</span>
                 {createdAt && (
                   <>
-                    <span className="text-zinc-600">�</span>
-                    <span className="text-zinc-500 text-xs">Member since {createdAt}</span>
+                    <span className="text-body/50">•</span>
+                    <span className="text-body text-xs">Member since {createdAt}</span>
                   </>
                 )}
               </p>
@@ -187,7 +187,7 @@ export default function ProfilePage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono px-3 py-1.5 rounded-lg bg-black/40 border border-white/5 text-zinc-400">
+            <span className="text-[11px] font-mono px-3 py-1.5 rounded-lg bg-bg-alt border border-line text-body">
               UID: {user.uid.slice(0, 8)}...
             </span>
           </div>
@@ -196,29 +196,29 @@ export default function ProfilePage() {
 
       {/* Notifications */}
       {successMessage && (
-        <div className="mb-6 flex items-center gap-3 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs shadow-lg animate-in fade-in duration-300">
-          <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
+        <div className="mb-6 flex items-center gap-3 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-500 text-xs shadow-lg animate-in fade-in duration-300">
+          <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{successMessage}</span>
         </div>
       )}
 
       {errorMessage && (
-        <div className="mb-6 flex items-center gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs shadow-lg animate-in fade-in duration-300">
-          <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+        <div className="mb-6 flex items-center gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/25 text-red-500 text-xs shadow-lg animate-in fade-in duration-300">
+          <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {/* Profile Form Card */}
-      <div className="rounded-3xl bg-[#131316] border border-white/10 p-6 sm:p-8 shadow-xl">
-        <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+      <div className="rounded-3xl bg-surface border border-line p-6 sm:p-8 shadow-xl">
+        <div className="flex items-center justify-between pb-6 border-b border-line mb-6">
           <div>
-            <h2 className="text-base sm:text-lg font-semibold text-white">Account Information</h2>
-            <p className="text-xs text-zinc-400 mt-0.5">
+            <h2 className="text-base sm:text-lg font-semibold text-heading">Account Information</h2>
+            <p className="text-xs text-body mt-0.5">
               Manage your identity and communication details on TAPP.
             </p>
           </div>
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#c9a978]">
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-accent">
             <Sparkles className="w-3.5 h-3.5" />
             <span>TAPP Verified</span>
           </div>
@@ -227,24 +227,24 @@ export default function ProfilePage() {
         <form onSubmit={handleSave} className="space-y-6">
           {/* Read-only Authenticated Email */}
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-body mb-2">
               Authenticated Email (Read-Only)
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-body">
                 <Mail className="w-4 h-4" />
               </div>
               <input
                 type="email"
                 value={user.email || ""}
                 disabled
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#1a1a1e]/60 border border-white/5 text-sm text-zinc-400 cursor-not-allowed select-none font-mono"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-body cursor-not-allowed select-none font-mono"
               />
-              <span className="absolute inset-y-0 right-3 flex items-center text-[10px] text-zinc-500 font-medium">
+              <span className="absolute inset-y-0 right-3 flex items-center text-[10px] text-body font-medium">
                 Verified
               </span>
             </div>
-            <p className="text-[11px] text-zinc-500 mt-1.5">
+            <p className="text-[11px] text-body mt-1.5">
               Email addresses are tied to authentication and cannot be changed here.
             </p>
           </div>
@@ -253,12 +253,12 @@ export default function ProfilePage() {
           <div>
             <label
               htmlFor="fullName"
-              className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2"
+              className="block text-xs font-semibold uppercase tracking-wider text-body mb-2"
             >
               Full Name
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-body">
                 <User className="w-4 h-4" />
               </div>
               <input
@@ -267,7 +267,7 @@ export default function ProfilePage() {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="e.g., Katherine Vance"
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#18181c] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#c9a978] focus:ring-1 focus:ring-[#c9a978]/40 transition-all"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
               />
             </div>
           </div>
@@ -276,12 +276,12 @@ export default function ProfilePage() {
           <div>
             <label
               htmlFor="phoneNumber"
-              className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2"
+              className="block text-xs font-semibold uppercase tracking-wider text-body mb-2"
             >
               Phone Number
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-zinc-500">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-body">
                 <Phone className="w-4 h-4" />
               </div>
               <input
@@ -290,37 +290,37 @@ export default function ProfilePage() {
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder="e.g., +1 (555) 019-2834"
-                className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#18181c] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#c9a978] focus:ring-1 focus:ring-[#c9a978]/40 transition-all"
+                className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
               />
             </div>
           </div>
 
           {/* Role / Access Level Details */}
-          <div className="rounded-2xl bg-[#18181c]/50 border border-white/5 p-4 flex items-center justify-between">
+          <div className="rounded-2xl bg-bg-alt border border-line p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-[#c9a978]/10 text-[#c9a978]">
+              <div className="p-2 rounded-lg bg-accent/10 text-accent">
                 <Shield className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-white">Access Level</p>
-                <p className="text-[11px] text-zinc-400">
+                <p className="text-xs font-semibold text-heading">Access Level</p>
+                <p className="text-[11px] text-body">
                   {userRole === "admin"
                     ? "Full administrative moderation & curation privileges"
                     : "Standard ecosystem participant & product submitter"}
                 </p>
               </div>
             </div>
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/10 text-zinc-300">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-surface border border-line text-body">
               {userRole}
             </span>
           </div>
 
           {/* Save Action */}
-          <div className="pt-4 flex items-center justify-end gap-3 border-t border-white/10">
+          <div className="pt-4 flex items-center justify-end gap-3 border-t border-line">
             <button
               type="submit"
               disabled={saving}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#c9a978] to-[#b3915f] hover:from-[#dfcfbd] hover:to-[#c9a978] text-black font-semibold text-xs uppercase tracking-wider shadow-lg shadow-[#c9a978]/20 transition-all active:scale-95 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-accent to-accent-strong hover:brightness-110 text-black font-semibold text-xs uppercase tracking-wider shadow-lg shadow-accent/20 transition-all active:scale-95 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
             >
               {saving ? (
                 <>
