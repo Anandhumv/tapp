@@ -42,5 +42,13 @@ service cloud.firestore {
       allow update: if false;
       allow delete: if isAdmin();
     }
+
+    // service_inquiries/{id} — public consultation requests, admin-only visibility
+    match /service_inquiries/{id} {
+      allow read, update, delete: if isAdmin();
+      allow create: if request.resource.data.email is string &&
+        request.resource.data.fullName is string &&
+        request.resource.data.status == 'new';
+    }
   }
 }
