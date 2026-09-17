@@ -111,15 +111,9 @@ export default function Home() {
 
         {/* Action Row */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a
-            href="#directory"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-all shadow-xl shadow-white/5"
-          >
-            Explore Directory
-          </a>
           <Link
             href="/submit-product"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#c9a978]/40 hover:bg-white/10 font-medium text-sm transition-all backdrop-blur-xl text-white"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-all shadow-xl shadow-white/5"
           >
             + Add Product
           </Link>
