@@ -59,17 +59,32 @@ export default function SubmitProductPage() {
         }
     }, [user, authLoading, router]);
 
+    const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
+    const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
+
     const handleImageChange = (e) => {
         const file = e.target.files?.[0];
-        if (file) {
-            if (file.size > 5 * 1024 * 1024) {
-                setErrorMessage("Image size must be under 5MB.");
-                return;
-            }
-            setImageFile(file);
-            setImagePreview(URL.createObjectURL(file));
-            setErrorMessage("");
+        if (!file) return;
+
+        if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+            setErrorMessage("Only JPG, PNG, and WebP formats are supported.");
+            setImageFile(null);
+            setImagePreview(null);
+            e.target.value = "";
+            return;
         }
+
+        if (file.size > MAX_IMAGE_SIZE) {
+            setErrorMessage("Image size must be 2MB or less.");
+            setImageFile(null);
+            setImagePreview(null);
+            e.target.value = "";
+            return;
+        }
+
+        setImageFile(file);
+        setImagePreview(URL.createObjectURL(file));
+        setErrorMessage("");
     };
 
     const handleSubmit = async (e) => {
@@ -328,13 +343,13 @@ export default function SubmitProductPage() {
                                 <p className="text-sm font-medium text-heading mb-1">
                                     Click to upload showcase image
                                 </p>
-                                <p className="text-xs text-body">PNG, JPG, or WEBP up to 5MB</p>
+                                <p className="text-xs text-body">JPG, PNG, or WebP up to 2MB</p>
                             </label>
                         )}
                         <input
                             id="file-upload"
                             type="file"
-                            accept="image/*"
+                            accept="image/jpeg,image/png,image/webp"
                             className="hidden"
                             onChange={handleImageChange}
                         />
