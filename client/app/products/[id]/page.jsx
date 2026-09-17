@@ -135,7 +135,6 @@ export default async function ProductDetailPage({ params }) {
                 <div className="rounded-xl border border-line bg-surface p-4 space-y-3">
                     <textarea
                         rows="3"
-                        placeholder="Ask a question about deployment, specs, or compatibility..."
                         className="w-full resize-none rounded-lg border border-line bg-bg-alt p-3 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none focus:ring-1 focus:ring-accent/40"
                     ></textarea>
                     <div className="flex justify-between items-center">

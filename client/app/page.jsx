@@ -184,7 +184,6 @@ export default function Home() {
             </span>
             <input
               type="text"
-              placeholder="Search hardware, micro-chips, renewable systems, or AI models..."
               className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-surface border border-line text-sm text-heading placeholder-body focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/50 transition-all shadow-inner"
             />
           </div>

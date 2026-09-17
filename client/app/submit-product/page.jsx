@@ -207,7 +207,6 @@ export default function SubmitProductPage() {
                             required
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            placeholder="e.g. AeroPulse Mark IV"
                             className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
@@ -221,7 +220,6 @@ export default function SubmitProductPage() {
                             required
                             value={tagline}
                             onChange={(e) => setTagline(e.target.value)}
-                            placeholder="e.g. Solid-state neural navigation drone"
                             className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
@@ -273,7 +271,6 @@ export default function SubmitProductPage() {
                             required
                             value={websiteUrl}
                             onChange={(e) => setWebsiteUrl(e.target.value)}
-                            placeholder="https://company.com"
                             className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
@@ -286,7 +283,6 @@ export default function SubmitProductPage() {
                             type="url"
                             value={demoUrl}
                             onChange={(e) => setDemoUrl(e.target.value)}
-                            placeholder="https://youtube.com/watch?v=..."
                             className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                         />
                     </div>
@@ -301,7 +297,6 @@ export default function SubmitProductPage() {
                         rows={4}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Outline architecture, hardware specifications, and core differentiators..."
                         className="w-full rounded-xl bg-surface border border-line px-4 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none"
                     />
                 </div>

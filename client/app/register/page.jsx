@@ -66,7 +66,6 @@ export default function RegisterPage() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Arun Kumar"
             className="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none focus:ring-1 focus:ring-accent/40"
           />
         </div>
@@ -80,7 +79,6 @@ export default function RegisterPage() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
             className="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none focus:ring-1 focus:ring-accent/40"
           />
         </div>
@@ -95,7 +93,6 @@ export default function RegisterPage() {
             minLength={6}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="At least 6 characters"
             className="w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-sm text-heading placeholder-body/60 focus:border-line-hover focus:outline-none focus:ring-1 focus:ring-accent/40"
           />
         </div>
