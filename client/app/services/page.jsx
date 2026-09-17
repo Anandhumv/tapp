@@ -301,7 +301,6 @@ export default function ServicesPage() {
                       required
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      placeholder="Dr. Evelyn Stone"
                       className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                     />
                   </div>
@@ -321,7 +320,6 @@ export default function ServicesPage() {
                       required
                       value={organization}
                       onChange={(e) => setOrganization(e.target.value)}
-                      placeholder="OmniDynamics Labs"
                       className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                     />
                   </div>
@@ -343,7 +341,6 @@ export default function ServicesPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="evelyn@gmail.com"
                       className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                     />
                   </div>
@@ -385,7 +382,6 @@ export default function ServicesPage() {
                     required
                     value={projectScope}
                     onChange={(e) => setProjectScope(e.target.value)}
-                    placeholder="Describe your technical specifications, estimated volumes, target timelines, or strategic advisory goals..."
                     className="w-full pl-10 pr-4 py-3 rounded-xl bg-bg-alt border border-line text-sm text-heading placeholder-body/60 focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/40 transition-all"
                   />
                 </div>
