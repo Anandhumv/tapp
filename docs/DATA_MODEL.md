@@ -16,12 +16,12 @@ Stores user profile information and authorization role.
   "createdAt": "2026-09-12T10:00:00.000Z" // Firestore Timestamp or ISO string
 }
 ```
-*Note: The platform founder/client is manually granted the `admin` role directly in the Firebase Console or via seed script.*
+*Note: The platform founder/client is manually granted the `admin` role directly in the Firebase Console or via seed script. Public self-registration was removed after Day 6 — this is the only account on the platform.*
 
 ---
 
 ### 2. `products/{id}`
-Stores product listings submitted by users or admins.
+Stores product listings added via `/submit-product` (admin-only since Day 6+).
 
 ```json
 {
@@ -48,6 +48,39 @@ Stores feedback and questions for a specific product.
   "userId": "commenter_uid",
   "userName": "Rahul M.",
   "commentText": "Does this package include warranty support?",
+  "createdAt": "2026-09-12T10:00:00.000Z" // Firestore Timestamp
+}
+```
+
+---
+
+### 4. `service_inquiries/{id}`
+Consultation requests submitted from `/services`. Public create, admin-only read.
+
+```json
+{
+  "fullName": "Dr. Evelyn Stone",
+  "organization": "OmniDynamics Labs",
+  "email": "evelyn@gmail.com",
+  "serviceOfInterest": "Bespoke Hardware Sourcing",
+  "projectScope": "Full requirements text...",
+  "userId": "commenter_uid_or_null",
+  "status": "new",
+  "createdAt": "2026-09-12T10:00:00.000Z" // Firestore Timestamp
+}
+```
+
+---
+
+### 5. `contact_messages/{id}`
+Messages submitted from `/contact`. Public create, admin-only read.
+
+```json
+{
+  "name": "Arun Kumar",
+  "email": "arun@gmail.com",
+  "message": "Full message text...",
+  "status": "new",
   "createdAt": "2026-09-12T10:00:00.000Z" // Firestore Timestamp
 }
 ```

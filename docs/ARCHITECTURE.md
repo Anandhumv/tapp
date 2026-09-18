@@ -1,7 +1,7 @@
 ﻿# System Architecture & Contracts ?" tapp
 
 ## Overview
-**tapp** is a product discovery and community showcase platform designed for public browsing, user submissions, and administrative curation.
+**tapp** is a curated product discovery and showcase platform: public visitors browse the directory, leave comments, and reach the team via Services/Contact inquiries, while a single admin account privately manages the catalog. Public self-registration and public product submission were removed after Day 6 in favor of an admin-curated model — see the Route & Access Contract below.
 
 ## Repository Structure (Client & Server)
 The repository is structured with explicit separation of frontend (client) and backend (server) domains:
@@ -56,26 +56,31 @@ From the repository root:
 |---|---|---|
 | `/` | Public | Homepage showcasing approved products (`status == "approved"`), hero banner, category filters, and search. |
 | `/products/[id]` | Public | Dynamic product detail page: fetches product document by ID and loads associated comments (`productId == id`). |
-| `/login` | Public | Sign-in form using Firebase Auth (Email/Password & Google Auth). |
-| `/register` | Public | Account registration; creates `users/{uid}` profile with `role: "user"`. |
-| `/submit-product` | Logged-in User | Form to upload product media to Cloudinary (unsigned upload preset `tapp_uploads`) and create Firestore document with `status: "pending"`. Redirects unauthenticated users to `/login`. |
-| `/admin` | Admin Only (`role === "admin"`) | Moderation panel: queries `status == "pending"` submissions. Single-click approve (`status: "approved"`) or delete (removes Firestore doc and Storage media). Redirects non-admins to `/`. |
+| `/services` | Public | Services showcase + consultation form; writes to `service_inquiries` (admin-only read). |
+| `/about` | Public | Static platform overview page. |
+| `/contact` | Public | Contact form; writes to `contact_messages` (admin-only read). |
+| `/login` | Public (discreet, unlinked from main nav) | Sign-in form using Firebase Auth (Email/Password). The only entry point to the admin dashboard — linked solely from a small "Admin" link in the footer. |
+| `/submit-product` | Admin Only (`role === "admin"`) | Upload product media to Cloudinary (unsigned upload preset `tapp_uploads`) and create a Firestore document with `status: "pending"`. Redirects non-admins to `/`. Linked only from `/admin`. |
+| `/admin` | Admin Only (`role === "admin"`) | Dashboard listing `service_inquiries` and `contact_messages`, plus a link to `/submit-product` to add new listings. Redirects non-admins to `/`. |
 
-## End-to-End User Journey
+> **Removed after Day 6:** `/register` (public self-registration) and the public "+ Add Product" / "Sign In" navbar entry points. There is exactly one user account (the admin), created manually in the Firebase console. See `PLAYBOOK_ROADMAP.md` for when this changed.
+
+## End-to-End Content Journey
 ```
-1. Visitor registers at /register -> role "user" assigned in Firestore.
-2. User navigates to /submit-product -> uploads screenshot/media & submits specs.
-3. System saves image to Cloud Storage & inserts product with status: "pending".
-4. Admin logs in -> accesses protected /admin dashboard.
-5. Admin clicks "Approve" -> product status updates to "approved".
-6. Product instantly surfaces on homepage catalog (/) and dynamic detail page (/products/[id]).
-7. Public users leave comments & questions on the product detail page.
+1. Admin signs in at /login (reached only via the discreet footer link).
+2. Admin adds a product at /submit-product -> uploads image to Cloudinary,
+   creates a Firestore doc with status: "pending".
+3. Admin (via a future /admin moderation view) flips status to "approved".
+4. Product surfaces on the homepage catalog (/) and its detail page (/products/[id]).
+5. Public visitors browse, leave comments, and reach the team via
+   /services or /contact (both write admin-only-readable Firestore docs).
 ```
 
 ## Security Boundaries & Rules
 - **Firestore Security Rules**:
-  - `products`: Public read for `status == "approved"`; owner can read their own pending; admins can read all; authenticated users can create with `status: "pending"`; admins can update `status` or delete.
-  - `users`: Authenticated user can read/write their own profile doc. Admins can view/edit roles.
+  - `products`: Public read for `status == "approved"`; owner (admin) can read their own pending; authenticated create with `status: "pending"`; admin-only update/delete.
+  - `users`: Authenticated user can read/write their own profile doc. Admins can view/edit roles. (In practice, only the single admin account exists — public registration was removed.)
   - `comments`: Public read; authenticated users can write new comments.
+  - `service_inquiries` / `contact_messages`: Public create (basic required-field validation); admin-only read/update/delete.
 - **Image Uploads (Cloudinary)**:
   - Product images are uploaded client-side directly to Cloudinary via an unsigned upload preset (`tapp_uploads`, cloud `r75nkzhl`), not Firebase Storage. Limit uploads to image MIME types (`image/jpeg`, `image/png`, `image/webp`) with maximum file size (2 MB), enforced client-side and via the Cloudinary preset's upload restrictions.

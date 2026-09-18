@@ -12,13 +12,13 @@ export default function Footer() {
             Let&apos;s create something extraordinary
           </span>
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-heading tracking-tight mb-8">
-            Ready to showcase your breakthrough?
+            Have a project in mind?
           </h2>
           <Link
-            href="/submit-product"
+            href="/contact"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-accent to-accent-strong text-black font-semibold text-sm hover:brightness-110 transition-all shadow-xl shadow-accent/20"
           >
-            + Add Product
+            Get in Touch
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -101,10 +101,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Platform Col */}
+          {/* Company Col */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-heading mb-3">
-              Platform
+              Company
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -113,18 +113,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/submit-product" className="hover:text-heading transition-colors">
-                  Submit a Product
+                <Link href="/services" className="hover:text-heading transition-colors">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="hover:text-heading transition-colors">
-                  Admin Dashboard
+                <Link href="/about" className="hover:text-heading transition-colors">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link href="/login" className="hover:text-heading transition-colors">
-                  Sign In
+                <Link href="/contact" className="hover:text-heading transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -159,6 +159,9 @@ export default function Footer() {
             </Link>
             <Link href="/terms" className="hover:text-heading transition-colors">
               Terms of Service
+            </Link>
+            <Link href="/login" className="hover:text-heading transition-colors">
+              Admin
             </Link>
             <span className="flex items-center gap-1">
               Crafted with <Heart className="h-3 w-3 text-rose-500 fill-rose-500" /> for creators

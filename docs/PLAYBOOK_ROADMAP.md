@@ -36,11 +36,18 @@ Track the daily progress of the **tapp** product directory web application.
   - [x] Wire Navbar user state, sign-out, and conditional Admin link.
   - [x] Protect `/submit-product` route.
 
-- [ ] **Day 6: Image Uploads & Submission Pipeline**
-  - [ ] Client-side validation on `/submit-product` (<= 2 MB, `.jpg`, `.png`, `.webp`).
-  - [ ] Upload image file to Cloud Storage (`/products/{timestamp}_{filename}`).
-  - [ ] Insert Firestore product doc with `status: "pending"`.
-  - [ ] Success state and confirmation feedback.
+- [x] **Day 6: Image Uploads & Submission Pipeline**
+  - [x] Client-side validation on `/submit-product` (<= 2 MB, `.jpg`, `.png`, `.webp`).
+  - [x] Upload image file to Cloudinary (approved Day 4 substitute for Cloud Storage).
+  - [x] Insert Firestore product doc with `status: "pending"`.
+  - [x] Success state and confirmation feedback.
+
+> **Post-Day-6 scope change:** Public self-registration (`/register`) and public product
+> submission were retired in favor of an admin-curated model. `/submit-product` is now
+> `role === "admin"`-only, reached via `/admin`; `/login` is unlinked from the main nav
+> and reachable only via a discreet footer link. The public nav now shows Work/Projects,
+> Services, About Us, and Contact. See `docs/ARCHITECTURE.md`'s Route & Access Contract
+> for the current (not the original Day 5 plan's) state.
 
 - [ ] **Day 7: Dynamic Catalog & Comments**
   - [ ] Live Firestore query for homepage (`status == "approved"`).

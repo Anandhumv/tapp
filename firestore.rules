@@ -50,5 +50,14 @@ service cloud.firestore {
         request.resource.data.fullName is string &&
         request.resource.data.status == 'new';
     }
+
+    // contact_messages/{id} — public contact form, admin-only visibility
+    match /contact_messages/{id} {
+      allow read, update, delete: if isAdmin();
+      allow create: if request.resource.data.email is string &&
+        request.resource.data.name is string &&
+        request.resource.data.message is string &&
+        request.resource.data.status == 'new';
+    }
   }
 }

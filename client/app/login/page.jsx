@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { LogIn, AlertCircle } from "lucide-react";
+import { LogIn, AlertCircle, ShieldCheck } from "lucide-react";
 import { auth } from "../../lib/firebase";
 import { validateEmail } from "../../lib/validateEmail";
 
@@ -40,11 +39,14 @@ export default function LoginPage() {
   return (
     <div className="mx-auto max-w-md py-24 px-4">
       <div className="text-center mb-8">
+        <div className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-accent/10 border border-line text-accent mb-4">
+          <ShieldCheck className="w-5 h-5" />
+        </div>
         <h1 className="font-display text-2xl font-bold tracking-tight text-heading sm:text-3xl">
-          Welcome Back
+          Admin Access
         </h1>
         <p className="mt-1 text-sm text-body">
-          Sign in to submit products and track your listings.
+          Restricted sign-in for site administration.
         </p>
       </div>
 
@@ -91,13 +93,6 @@ export default function LoginPage() {
           {loading ? "Signing in..." : "Sign In"}
         </button>
       </form>
-
-      <p className="mt-6 text-center text-xs text-body">
-        Don&apos;t have an account?{" "}
-        <Link href="/register" className="text-accent hover:underline">
-          Register
-        </Link>
-      </p>
     </div>
   );
 }

@@ -34,7 +34,7 @@ const PRICING_MODELS = [
 ];
 
 export default function SubmitProductPage() {
-    const { user, loading: authLoading } = useAuth();
+    const { user, role, loading: authLoading } = useAuth();
     const router = useRouter();
 
     const [title, setTitle] = useState("");
@@ -54,10 +54,10 @@ export default function SubmitProductPage() {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        if (!authLoading && !user) {
-            router.push("/login");
+        if (!authLoading && (!user || role !== "admin")) {
+            router.push("/");
         }
-    }, [user, authLoading, router]);
+    }, [user, role, authLoading, router]);
 
     const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
     const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
@@ -134,11 +134,11 @@ export default function SubmitProductPage() {
         }
     };
 
-    if (authLoading || !user) {
+    if (authLoading || !user || role !== "admin") {
         return (
             <div className="min-h-[70vh] flex items-center justify-center text-xs text-body">
                 <Loader2 className="h-5 w-5 animate-spin text-accent mr-2" />
-                Authenticating session...
+                Verifying access...
             </div>
         );
     }
@@ -175,17 +175,17 @@ export default function SubmitProductPage() {
                     </span>
                 </div>
                 <h1 className="font-display text-3xl font-bold text-heading tracking-tight">
-                    Submit Hardware or Platform
+                    Add Hardware or Platform
                 </h1>
                 <p className="mt-1 text-sm text-body">
-                    List your next-generation hardware, clean-tech, or autonomous system on TAPP.
+                    Internal tool for adding a new listing to the TAPP directory.
                 </p>
             </div>
 
             <div className="mb-8 flex items-start gap-3 rounded-xl border border-amber-500/25 bg-amber-500/10 p-4 text-xs text-amber-600 dark:text-amber-300">
                 <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>
-                    <strong>Review Policy:</strong> Submissions enter a <code>pending</code> status and require administrator approval before appearing in the public directory.
+                    <strong>Note:</strong> New listings are saved with <code>pending</code> status until moved to <code>approved</code> in the admin dashboard.
                 </span>
             </div>
 
