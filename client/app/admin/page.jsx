@@ -13,7 +13,7 @@ import {
   Calendar,
   Inbox,
   Plus,
-  User,
+  ArrowRight,
 } from "lucide-react";
 import { db } from "../../lib/firebase";
 import { useAuth } from "../../lib/AuthContext";
@@ -25,8 +25,8 @@ export default function AdminPage() {
   const [inquiries, setInquiries] = useState([]);
   const [loadingInquiries, setLoadingInquiries] = useState(true);
 
-  const [messages, setMessages] = useState([]);
-  const [loadingMessages, setLoadingMessages] = useState(true);
+  const [newMessageCount, setNewMessageCount] = useState(0);
+  const [messageTotal, setMessageTotal] = useState(0);
 
   useEffect(() => {
     if (!authLoading && (!user || role !== "admin")) {
@@ -51,8 +51,8 @@ export default function AdminPage() {
 
     const q = query(collection(db, "contact_messages"), orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (snap) => {
-      setMessages(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
-      setLoadingMessages(false);
+      setMessageTotal(snap.size);
+      setNewMessageCount(snap.docs.filter((d) => d.data().status !== "resolved").length);
     });
 
     return unsubscribe;
@@ -148,57 +148,31 @@ export default function AdminPage() {
         </div>
       )}
 
-      <div className="flex items-end justify-between mb-6 mt-14 border-b border-line pb-4">
-        <h2 className="text-lg font-semibold text-heading">Contact Messages</h2>
-        <span className="text-xs text-body">{messages.length} total</span>
-      </div>
-
-      {loadingMessages ? (
-        <div className="flex items-center justify-center py-20">
-          <Loader2 className="w-6 h-6 animate-spin text-accent" />
-        </div>
-      ) : messages.length === 0 ? (
-        <div className="flex flex-col items-center justify-center gap-3 py-20 text-center rounded-2xl border border-line bg-surface">
-          <Inbox className="w-8 h-8 text-body/60" />
-          <p className="text-sm text-body">No contact messages yet.</p>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className="rounded-2xl bg-surface border border-line p-5 space-y-3"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-sm font-semibold text-heading flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-body" />
-                  {msg.name}
-                </h3>
-                {msg.createdAt?.toDate && (
-                  <span className="flex items-center gap-1.5 text-xs text-body">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {msg.createdAt.toDate().toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </span>
-                )}
-              </div>
-
-              <span className="flex items-center gap-1.5 text-xs text-body">
-                <Mail className="w-3.5 h-3.5" />
-                {msg.email}
-              </span>
-
-              <p className="text-xs text-heading/85 leading-relaxed flex items-start gap-1.5 pt-2 border-t border-line">
-                <MessageSquareText className="w-3.5 h-3.5 shrink-0 mt-0.5 text-body" />
-                {msg.message}
+      <div className="mt-14">
+        <h2 className="text-lg font-semibold text-heading mb-4">Quick Access</h2>
+        <Link
+          href="/admin/messages"
+          className="group relative flex items-center justify-between gap-4 rounded-2xl bg-surface border border-line hover:border-line-hover p-5 transition-all"
+        >
+          <div className="flex items-center gap-4">
+            <span className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-accent/10 border border-line text-accent">
+              <Mail className="w-5 h-5" />
+              {newMessageCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-accent text-black text-[10px] font-bold">
+                  {newMessageCount}
+                </span>
+              )}
+            </span>
+            <div>
+              <h3 className="text-sm font-semibold text-heading">Contact Messages</h3>
+              <p className="text-xs text-body">
+                {messageTotal} total &middot; {newMessageCount} new
               </p>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+          <ArrowRight className="w-4 h-4 text-body group-hover:text-accent transition-colors" />
+        </Link>
+      </div>
     </div>
   );
 }
