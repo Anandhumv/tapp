@@ -77,11 +77,11 @@ export default function AdminPage() {
           </h1>
         </div>
         <Link
-          href="/submit-product"
+          href="/admin/add-project"
           className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-black bg-gradient-to-r from-accent to-accent-strong hover:brightness-110 transition-all shadow-lg shadow-accent/20"
         >
           <Plus className="w-3.5 h-3.5" />
-          Add Product
+          + Add New Project
         </Link>
       </div>
 

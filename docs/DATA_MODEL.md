@@ -21,7 +21,7 @@ Stores user profile information and authorization role.
 ---
 
 ### 2. `products/{id}`
-Stores product listings added via `/submit-product` (admin-only since Day 6+).
+Stores product listings added via `/admin/add-project` (admin-only).
 
 ```json
 {
@@ -30,7 +30,7 @@ Stores product listings added via `/submit-product` (admin-only since Day 6+).
   "tagline": "High-efficiency bifacial panel setup",
   "description": "Full specifications and technical overview...",
   "imageUrl": "https://res.cloudinary.com/r75nkzhl/...",
-  "status": "pending", // "pending" | "approved" (Controls homepage visibility)
+  "status": "published", // set directly on creation — admin-authored, no moderation queue
   "userId": "submitter_uid",
   "userEmail": "submitter@example.com",
   "createdAt": "2026-09-12T10:00:00.000Z" // Firestore Timestamp

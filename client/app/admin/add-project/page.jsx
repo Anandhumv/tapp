@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "../../lib/AuthContext";
-import { db } from "../../lib/firebase";
+import { useAuth } from "../../../lib/AuthContext";
+import { db } from "../../../lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { uploadToCloudinary } from "../../lib/cloudinary";
+import { uploadToCloudinary } from "../../../lib/cloudinary";
 import {
     UploadCloud,
     CheckCircle2,
     AlertCircle,
     Loader2,
-    Sparkles,
+    ShieldCheck,
     ArrowLeft,
 } from "lucide-react";
 import Link from "next/link";
@@ -33,7 +33,7 @@ const PRICING_MODELS = [
     "Enterprise",
 ];
 
-export default function SubmitProductPage() {
+export default function AddProjectPage() {
     const { user, role, loading: authLoading } = useAuth();
     const router = useRouter();
 
@@ -55,7 +55,7 @@ export default function SubmitProductPage() {
 
     useEffect(() => {
         if (!authLoading && (!user || role !== "admin")) {
-            router.push("/");
+            router.push("/login");
         }
     }, [user, role, authLoading, router]);
 
@@ -116,18 +116,18 @@ export default function SubmitProductPage() {
                 imageUrl,
                 userId: user.uid,
                 userEmail: user.email,
-                status: "pending",
+                status: "published",
                 upvotesCount: 0,
                 createdAt: serverTimestamp(),
             });
 
             setSuccess(true);
             setTimeout(() => {
-                router.push("/");
-            }, 2500);
+                router.push("/admin");
+            }, 2000);
         } catch (err) {
             console.error("Submission error:", err);
-            setErrorMessage(err.message || "Failed to submit product.");
+            setErrorMessage(err.message || "Failed to publish project.");
         } finally {
             setSubmitting(false);
             setUploadingImage(false);
@@ -148,11 +148,11 @@ export default function SubmitProductPage() {
             <div className="min-h-[80vh] flex items-center justify-center px-4 pt-20">
                 <div className="w-full max-w-lg rounded-2xl bg-surface border border-line-hover p-8 text-center shadow-2xl">
                     <CheckCircle2 className="mx-auto h-12 w-12 text-accent mb-4 animate-bounce" />
-                    <h2 className="font-display text-2xl font-bold text-heading mb-2">Submission Received</h2>
+                    <h2 className="font-display text-2xl font-bold text-heading mb-2">Project Published</h2>
                     <p className="text-sm text-body mb-6">
-                        Your hardware or platform solution has been entered into the moderation queue.
+                        The listing is now live on the public directory.
                     </p>
-                    <div className="text-xs text-body">Redirecting to showcase...</div>
+                    <div className="text-xs text-body">Redirecting to Admin Dashboard...</div>
                 </div>
             </div>
         );
@@ -162,30 +162,30 @@ export default function SubmitProductPage() {
         <div className="mx-auto max-w-3xl pt-28 pb-20 px-4">
             <div className="mb-8">
                 <Link
-                    href="/"
+                    href="/admin"
                     className="inline-flex items-center gap-1 text-xs text-body hover:text-accent transition-colors mb-4"
                 >
                     <ArrowLeft className="h-3.5 w-3.5" />
-                    <span>Back to directory</span>
+                    <span>Back to Admin Dashboard</span>
                 </Link>
                 <div className="flex items-center gap-2 mb-1">
-                    <Sparkles className="h-4 w-4 text-accent" />
+                    <ShieldCheck className="h-4 w-4 text-accent" />
                     <span className="text-[11px] font-semibold uppercase tracking-widest text-accent">
-                        Curated Index
+                        Admin Tools
                     </span>
                 </div>
                 <h1 className="font-display text-3xl font-bold text-heading tracking-tight">
-                    Add Hardware or Platform
+                    Add New Project
                 </h1>
                 <p className="mt-1 text-sm text-body">
-                    Internal tool for adding a new listing to the TAPP directory.
+                    Internal tool for publishing a new listing directly to the TAPP directory.
                 </p>
             </div>
 
             <div className="mb-8 flex items-start gap-3 rounded-xl border border-amber-500/25 bg-amber-500/10 p-4 text-xs text-amber-600 dark:text-amber-300">
                 <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>
-                    <strong>Note:</strong> New listings are saved with <code>pending</code> status until moved to <code>approved</code> in the admin dashboard.
+                    <strong>Note:</strong> Listings created here are saved with <code>published</code> status and appear on the public directory immediately.
                 </span>
             </div>
 
@@ -362,11 +362,11 @@ export default function SubmitProductPage() {
                             <span>
                                 {uploadingImage
                                     ? "Uploading Media to Cloudinary..."
-                                    : "Registering Product..."}
+                                    : "Publishing Project..."}
                             </span>
                         </>
                     ) : (
-                        <span>Submit Solution for Moderation</span>
+                        <span>Publish Project</span>
                     )}
                 </button>
             </form>

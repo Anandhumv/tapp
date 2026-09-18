@@ -25,14 +25,10 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // products/{id} — public catalog, pending moderation queue
+    // products/{id} — public catalog, admin-published directly
     match /products/{id} {
-      allow read: if resource.data.status == 'approved' ||
-        isOwner(resource.data.userId) || isAdmin();
-      allow create: if isSignedIn() &&
-        request.resource.data.userId == request.auth.uid &&
-        request.resource.data.status == 'pending';
-      allow update, delete: if isAdmin();
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
     }
 
     // comments/{id} — public read, authenticated write

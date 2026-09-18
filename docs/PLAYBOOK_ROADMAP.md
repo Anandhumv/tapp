@@ -37,28 +37,31 @@ Track the daily progress of the **tapp** product directory web application.
   - [x] Protect `/submit-product` route.
 
 - [x] **Day 6: Image Uploads & Submission Pipeline**
-  - [x] Client-side validation on `/submit-product` (<= 2 MB, `.jpg`, `.png`, `.webp`).
+  - [x] Client-side validation on the submission form (<= 2 MB, `.jpg`, `.png`, `.webp`).
   - [x] Upload image file to Cloudinary (approved Day 4 substitute for Cloud Storage).
-  - [x] Insert Firestore product doc with `status: "pending"`.
+  - [x] Insert Firestore product doc.
   - [x] Success state and confirmation feedback.
 
-> **Post-Day-6 scope change:** Public self-registration (`/register`) and public product
-> submission were retired in favor of an admin-curated model. `/submit-product` is now
-> `role === "admin"`-only, reached via `/admin`; `/login` is unlinked from the main nav
-> and reachable only via a discreet footer link. The public nav now shows Work/Projects,
-> Services, About Us, and Contact. See `docs/ARCHITECTURE.md`'s Route & Access Contract
-> for the current (not the original Day 5 plan's) state.
+> **Post-Day-6 scope changes:** Public self-registration (`/register`) and public product
+> submission were retired in favor of an admin-curated model. The submission form moved
+> from the public `/submit-product` to `/admin/add-project` (`role === "admin"`-only,
+> reached via `/admin`); `/login` is unlinked from the main nav and reachable only via a
+> discreet footer link. The public nav now shows Work/Projects, Services, About Us, and
+> Contact. Product `status` is now `"published"` on creation (was `"pending"` /
+> `"approved"`) — since only the admin creates listings, there's no moderation queue.
+> See `docs/ARCHITECTURE.md`'s Route & Access Contract for the current (not the original
+> Day 5/8 plan's) state.
 
 - [ ] **Day 7: Dynamic Catalog & Comments**
-  - [ ] Live Firestore query for homepage (`status == "approved"`).
+  - [ ] Live Firestore query for homepage (`status == "published"`).
   - [ ] Wire dynamic detail page `client/app/products/[id]/page.jsx` using `getDoc()`.
   - [ ] Wire comment submission & query comments collection in real-time.
 
 - [ ] **Day 8: Admin Review Dashboard**
-  - [ ] Build `client/app/admin/page.jsx` restricted strictly to `role === "admin"`.
-  - [ ] Display pending products in clean moderation cards.
-  - [ ] One-click Approve action (`status: "approved"`).
-  - [ ] One-click Reject/Delete action (deletes doc and Storage image).
+  - [x] Build `client/app/admin/page.jsx` restricted strictly to `role === "admin"` (built ahead of schedule for Service Inquiries + Contact Messages).
+  - [ ] ~~Display pending products in clean moderation cards~~ — moot: products publish directly (`status: "published"`) with no pending queue, per the post-Day-6 scope change above.
+  - [ ] ~~One-click Approve action~~ — moot, same reason.
+  - [ ] Product-level Delete action from `/admin` still worth adding (currently only deletable via the Firebase console).
 
 - [ ] **Day 9: Bug Bash, Polish & Staging Deploy**
   - [ ] Full bug bash & edge case handling.
