@@ -6,7 +6,6 @@ import { signOut } from "firebase/auth";
 import { LogOut, ShieldCheck, Sparkles } from "lucide-react";
 import { auth } from "../lib/firebase";
 import { useAuth } from "../lib/AuthContext";
-import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   { label: "Work / Projects", href: "/#directory" },
@@ -49,8 +48,6 @@ export default function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
-          <ThemeToggle variant="navbar" />
-
           {isAdmin && (
             <>
               <Link

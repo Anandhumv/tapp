@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import ProductCard from "../components/ProductCard";
-import ThemeToggle from "../components/ThemeToggle";
 import { db } from "../lib/firebase";
 import {
   Search,
@@ -111,11 +110,6 @@ export default function Home() {
 
   return (
     <div className="pt-24 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Left-side floating theme selector */}
-      <ThemeToggle
-        variant="floating"
-        className="fixed left-4 sm:left-6 top-1/2 -translate-y-1/2 z-40"
-      />
 
       {/* Immersive Hero Stage */}
       <section className="text-center relative pt-12 pb-20 overflow-hidden">
