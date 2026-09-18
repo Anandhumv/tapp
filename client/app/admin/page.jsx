@@ -14,6 +14,8 @@ import {
   Inbox,
   Plus,
   ArrowRight,
+  Pencil,
+  Boxes,
 } from "lucide-react";
 import { db } from "../../lib/firebase";
 import { useAuth } from "../../lib/AuthContext";
@@ -24,6 +26,9 @@ export default function AdminPage() {
 
   const [inquiries, setInquiries] = useState([]);
   const [loadingInquiries, setLoadingInquiries] = useState(true);
+
+  const [projects, setProjects] = useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
 
   const [newMessageCount, setNewMessageCount] = useState(0);
   const [messageTotal, setMessageTotal] = useState(0);
@@ -41,6 +46,18 @@ export default function AdminPage() {
     const unsubscribe = onSnapshot(q, (snap) => {
       setInquiries(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
       setLoadingInquiries(false);
+    });
+
+    return unsubscribe;
+  }, [role]);
+
+  useEffect(() => {
+    if (role !== "admin") return;
+
+    const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (snap) => {
+      setProjects(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+      setLoadingProjects(false);
     });
 
     return unsubscribe;
@@ -84,6 +101,58 @@ export default function AdminPage() {
           + Add New Project
         </Link>
       </div>
+
+      <div className="flex items-end justify-between mb-6 border-b border-line pb-4">
+        <h2 className="text-lg font-semibold text-heading flex items-center gap-2">
+          <Boxes className="w-4 h-4 text-accent" />
+          Projects
+        </h2>
+        <span className="text-xs text-body">{projects.length} total</span>
+      </div>
+
+      {loadingProjects ? (
+        <div className="flex items-center justify-center py-20">
+          <Loader2 className="w-6 h-6 animate-spin text-accent" />
+        </div>
+      ) : projects.length === 0 ? (
+        <div className="flex flex-col items-center justify-center gap-3 py-20 text-center rounded-2xl border border-line bg-surface">
+          <Inbox className="w-8 h-8 text-body/60" />
+          <p className="text-sm text-body">No projects yet.</p>
+        </div>
+      ) : (
+        <div className="space-y-3 mb-14">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="flex items-center gap-4 rounded-2xl bg-surface border border-line p-3 sm:p-4"
+            >
+              <img
+                src={project.imageUrl}
+                alt={project.title}
+                className="w-14 h-14 rounded-xl object-cover border border-line shrink-0"
+              />
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-semibold text-heading truncate">{project.title}</h3>
+                <div className="flex flex-wrap items-center gap-2 mt-1">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-accent/10 border border-line-hover text-accent">
+                    {project.category}
+                  </span>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-bg-alt border border-line text-body">
+                    {project.status || "published"}
+                  </span>
+                </div>
+              </div>
+              <Link
+                href={`/admin/edit-project/${project.id}`}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-bg-alt border border-line hover:border-line-hover text-xs font-medium text-body hover:text-heading transition-all shrink-0"
+              >
+                <Pencil className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Edit</span>
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="flex items-end justify-between mb-6 border-b border-line pb-4">
         <h2 className="text-lg font-semibold text-heading">Service Inquiries</h2>
