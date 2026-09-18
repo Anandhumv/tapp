@@ -1,6 +1,11 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import ProductCard from "../components/ProductCard";
 import ThemeToggle from "../components/ThemeToggle";
+import { db } from "../lib/firebase";
 import {
   Search,
   Play,
@@ -16,83 +21,9 @@ import {
   Compass,
   Award,
   Quote,
+  Loader2,
+  FolderOpen,
 } from "lucide-react";
-
-// Initial seed items matching the curated index
-const featuredProducts = [
-  {
-    id: "prod-1",
-    name: "Aether Sol-X Grid Module",
-    category: "CleanTech",
-    tagline: "Next-gen photovoltaic energy router with 99.4% efficiency.",
-    description:
-      "Engineered for extreme climates, featuring onboard neural predictive load balancing and military-grade cutover switches.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop",
-    supplier: "Aether Systems",
-    supplierInitials: "AS",
-  },
-  {
-    id: "prod-2",
-    name: "Vortex K-9 Robotic Core",
-    category: "Autonomous Systems",
-    tagline: "Sub-millimeter spatial mapping and automated assembly unit.",
-    description:
-      "Powered by dual edge-TPUs, delivering sub-millisecond reaction times for complex warehouse and autonomous factory operations.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1000&auto=format&fit=crop",
-    supplier: "Vortex Dynamics",
-    supplierInitials: "VK",
-  },
-  {
-    id: "prod-3",
-    name: "Cognitive Blade 04",
-    category: "AI Hardware",
-    tagline: "High-density liquid-cooled inferencing accelerator.",
-    description:
-      "Custom tensor matrix architecture optimized for large language models with zero-latency token streaming.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop",
-    supplier: "Cognitive Silicon",
-    supplierInitials: "CB",
-  },
-  {
-    id: "prod-4",
-    name: "Stratum Aero-Core",
-    category: "CleanTech",
-    tagline: "Distributed micro-wind generation telemetry unit.",
-    description:
-      "Deploys seamlessly across urban facades to harvest turbulent airflow, converting micro-gusts into stable grid power.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1000&auto=format&fit=crop",
-    supplier: "Stratum Labs",
-    supplierInitials: "SA",
-  },
-  {
-    id: "prod-5",
-    name: "CryoLink Q-API",
-    category: "DevTools",
-    tagline: "Cloud-to-quantum middleware bridge for cryptography.",
-    description:
-      "Enables standard enterprise applications to execute hybrid classical-quantum cryptographic routines with microsecond latency.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1000&auto=format&fit=crop",
-    supplier: "CryoLogic",
-    supplierInitials: "CL",
-  },
-  {
-    id: "prod-6",
-    name: "Sentinel Edge Key",
-    category: "SaaS / Hardware",
-    tagline: "Zero-trust hardware authentication token with FIPS 140-3.",
-    description:
-      "Physical cryptographic hardware token designed to secure enterprise infrastructure against advanced persistent threats.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
-    supplier: "Sentinel Corp",
-    supplierInitials: "SK",
-  },
-];
 
 const capabilities = [
   {
@@ -155,6 +86,29 @@ const studioMetrics = [
 ];
 
 export default function Home() {
+  const [projects, setProjects] = useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+
+  useEffect(() => {
+    // Single-field orderBy avoids requiring a composite index for
+    // status + createdAt; "published" filtering happens client-side.
+    const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(
+      q,
+      (snap) => {
+        const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        setProjects(docs.filter((p) => p.status === "published"));
+        setLoadingProjects(false);
+      },
+      (err) => {
+        console.error("Error fetching products:", err);
+        setLoadingProjects(false);
+      }
+    );
+
+    return unsubscribe;
+  }, []);
+
   return (
     <div className="pt-24 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Left-side floating theme selector */}
@@ -290,7 +244,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Curated Index Section Header */}
+      {/* Featured Projects Section Header */}
       <div
         id="directory"
         className="flex items-end justify-between mb-8 border-b border-line pb-4"
@@ -300,27 +254,36 @@ export default function Home() {
             Curated Index
           </span>
           <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight mt-1 text-heading">
-            Featured Hardware & Clean-Tech
+            Featured Projects & Client Work
           </h2>
         </div>
-        <span className="text-xs text-body">
-          Showing {featuredProducts.length} of 128 verified modules
-        </span>
+        {!loadingProjects && projects.length > 0 && (
+          <span className="text-xs text-body">
+            {projects.length} {projects.length === 1 ? "Project" : "Projects"} Published
+          </span>
+        )}
       </div>
 
       {/* Featured Projects Showcase (3-Column) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {featuredProducts.map((prod) => (
-          <ProductCard key={prod.id} product={prod} />
-        ))}
-      </div>
-
-      {/* Load More Trigger */}
-      <div className="mt-16 text-center">
-        <button className="px-8 py-3.5 rounded-xl bg-surface border border-line hover:border-line-hover text-xs font-semibold text-heading transition-all shadow-lg">
-          Load More Directory Entries
-        </button>
-      </div>
+      {loadingProjects ? (
+        <div className="flex items-center justify-center py-24">
+          <Loader2 className="w-6 h-6 animate-spin text-accent" />
+        </div>
+      ) : projects.length === 0 ? (
+        <div className="flex flex-col items-center justify-center gap-3 py-24 text-center rounded-2xl border border-line bg-surface">
+          <FolderOpen className="w-8 h-8 text-body/60" />
+          <p className="text-sm text-body max-w-md">
+            No projects published yet. New portfolio additions will appear here
+            once added through the admin panel.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <ProductCard key={project.id} product={project} />
+          ))}
+        </div>
+      )}
 
       {/* Studio Manifesto / About Us */}
       <section className="relative mt-32 pt-24 border-t border-line overflow-hidden">

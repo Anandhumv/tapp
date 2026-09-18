@@ -1,16 +1,8 @@
 import Link from "next/link";
-import { CheckCircle2, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Tag } from "lucide-react";
 
 export default function ProductCard({ product }) {
-    const {
-        id,
-        name,
-        category,
-        tagline,
-        imageUrl,
-        supplier = "Verified Supplier",
-        supplierInitials = "TS",
-    } = product;
+    const { id, title, category, tagline, imageUrl, pricing } = product;
 
     return (
         <Link
@@ -20,7 +12,7 @@ export default function ProductCard({ product }) {
             {/* Media */}
             <img
                 src={imageUrl}
-                alt={name}
+                alt={title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
 
@@ -38,20 +30,19 @@ export default function ProductCard({ product }) {
             {/* Caption */}
             <div className="absolute inset-x-0 bottom-0 p-5 space-y-2">
                 <h3 className="font-display text-xl font-semibold text-white leading-tight">
-                    {name}
+                    {title}
                 </h3>
                 <p className="text-xs text-white/70 leading-relaxed line-clamp-2">{tagline}</p>
 
-                <div className="flex items-center justify-between pt-2">
-                    <div className="flex items-center gap-1.5">
-                        <div className="w-5 h-5 rounded-full bg-accent/20 text-accent flex items-center justify-center text-[10px] font-bold">
-                            {supplierInitials}
-                        </div>
-                        <span className="text-[11px] text-white/60 font-medium">{supplier}</span>
-                        <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
-                    </div>
+                <div className="flex items-center pt-2">
+                    {pricing && (
+                        <span className="flex items-center gap-1.5 text-[11px] text-white/60 font-medium">
+                            <Tag className="w-3 h-3 text-accent" />
+                            {pricing}
+                        </span>
+                    )}
 
-                    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-white/10 border border-white/15 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="ml-auto flex items-center justify-center w-7 h-7 rounded-full bg-white/10 border border-white/15 text-white opacity-0 group-hover:opacity-100 transition-opacity">
                         <ArrowUpRight className="w-3.5 h-3.5" />
                     </span>
                 </div>
