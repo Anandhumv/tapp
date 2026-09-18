@@ -12,7 +12,7 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="fixed bottom-6 left-6 z-50 h-10 w-10 rounded-full bg-[#131316]/80 backdrop-blur-md border border-[#c9a978]/30 shadow-lg shadow-black/40" />
+      <div className="fixed bottom-20 left-6 z-50 h-10 w-10 rounded-full bg-[#131316]/80 backdrop-blur-md border border-[#c9a978]/30 shadow-lg shadow-black/40" />
     );
   }
 
@@ -25,7 +25,7 @@ export default function ThemeToggle() {
       onClick={toggle}
       aria-label="Toggle visual theme"
       title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      className="fixed bottom-6 left-6 z-50 h-10 w-10 flex items-center justify-center rounded-full bg-[#131316]/80 backdrop-blur-md border border-[#c9a978]/30 shadow-lg shadow-black/40 hover:border-[#c9a978] transition-all"
+      className="fixed bottom-20 left-6 z-50 h-10 w-10 flex items-center justify-center rounded-full bg-[#131316]/80 backdrop-blur-md border border-[#c9a978]/30 shadow-lg shadow-black/40 hover:border-[#c9a978] transition-all"
     >
       {isDark ? (
         <Sun className="w-4 h-4 text-[#c9a978]" />
