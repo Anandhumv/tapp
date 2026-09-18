@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Sparkles, ShieldCheck, Users2, Layers, ArrowRight } from "lucide-react";
+import { Sparkles, ShieldCheck, Users2, Layers } from "lucide-react";
 
 const values = [
   {
@@ -24,7 +23,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       <section className="text-center relative pt-8 pb-16 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[280px] bg-accent/15 blur-[130px] rounded-full pointer-events-none" />
 
@@ -44,7 +43,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {values.map(({ title, description, icon: Icon }) => (
           <div
             key={title}
@@ -57,22 +56,6 @@ export default function AboutPage() {
             <p className="text-xs text-body leading-relaxed">{description}</p>
           </div>
         ))}
-      </section>
-
-      <section className="rounded-3xl bg-surface border border-line p-8 sm:p-12 text-center space-y-6">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold text-heading tracking-tight">
-          Have something worth showcasing?
-        </h2>
-        <p className="text-sm text-body max-w-xl mx-auto leading-relaxed">
-          Get in touch and our team will take a look.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-accent to-accent-strong text-black font-semibold text-sm hover:brightness-110 transition-all shadow-xl shadow-accent/20"
-        >
-          Get in Touch
-          <ArrowRight className="w-4 h-4" />
-        </Link>
       </section>
     </div>
   );
