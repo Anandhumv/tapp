@@ -13,6 +13,9 @@ import {
   Building2,
   ShieldCheck,
   Timer,
+  Compass,
+  Award,
+  Quote,
 } from "lucide-react";
 
 // Initial seed items matching the curated index
@@ -119,6 +122,36 @@ const stats = [
   { label: "Elite Suppliers", value: "42+", icon: Building2 },
   { label: "Satisfaction Rate", value: "98%", icon: ShieldCheck },
   { label: "Curation Review", value: "24H", icon: Timer },
+];
+
+const studioExpertise = [
+  {
+    title: "Deep Tech & Neural Coprocessors",
+    description: "Custom silicon and inferencing hardware built for extreme throughput.",
+    icon: Cpu,
+  },
+  {
+    title: "Bespoke Hardware Engineering",
+    description: "Ground-up mechanical and electrical design, prototyped in-house.",
+    icon: Layers,
+  },
+  {
+    title: "Autonomous Systems & Telemetry",
+    description: "Navigation, sensing, and real-time telemetry for unmanned platforms.",
+    icon: Compass,
+  },
+  {
+    title: "Full-Cycle Enterprise Software",
+    description: "Firmware to cloud — architecture, delivery, and long-term support.",
+    icon: ShieldCheck,
+  },
+];
+
+const studioMetrics = [
+  { label: "Custom Prototypes Shipped", value: "24+", icon: Award },
+  { label: "Fault-Tolerant Deployments", value: "99.9%", icon: ShieldCheck },
+  { label: "In-House Integration", value: "100%", icon: Layers },
+  { label: "Rapid Architecture Scoping", value: "48H", icon: Compass },
 ];
 
 export default function Home() {
@@ -288,6 +321,71 @@ export default function Home() {
           Load More Directory Entries
         </button>
       </div>
+
+      {/* Studio Manifesto / About Us */}
+      <section className="relative mt-32 pt-24 border-t border-line overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/10 blur-[140px] rounded-full pointer-events-none" />
+
+        {/* Badge & Header */}
+        <div className="relative text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-line text-accent text-xs font-semibold uppercase tracking-wider mb-6">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Studio Manifesto</span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-heading leading-tight mb-6">
+            Architecting{" "}
+            <em className="italic text-accent">Next-Generation Systems</em>
+          </h2>
+          <p className="text-sm sm:text-base text-body leading-relaxed">
+            TAPP exists to bridge avant-garde hardware engineering with autonomous
+            software intelligence — building the physical and cognitive layers of
+            tomorrow&apos;s infrastructure as one discipline, not two.
+          </p>
+        </div>
+
+        {/* Core Expertise Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
+          {studioExpertise.map(({ title, description, icon: Icon }) => (
+            <div
+              key={title}
+              className="group relative rounded-2xl bg-surface border border-line hover:border-line-hover p-6 overflow-hidden transition-all duration-300 shadow-sm hover:shadow-xl"
+            >
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-2/3 h-16 bg-accent/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="relative w-11 h-11 rounded-xl bg-accent/10 border border-line text-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <Icon className="w-5 h-5" strokeWidth={1.5} />
+              </div>
+              <h3 className="relative font-semibold text-heading text-sm mb-1.5">{title}</h3>
+              <p className="relative text-xs text-body leading-relaxed">{description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Key Studio Metrics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 py-8 border-y border-line mb-20">
+          {studioMetrics.map(({ label, value, icon: Icon }) => (
+            <div key={label} className="flex flex-col items-center text-center gap-2">
+              <Icon className="w-4 h-4 text-accent" strokeWidth={1.5} />
+              <span className="font-display text-2xl sm:text-3xl font-bold text-heading">
+                {value}
+              </span>
+              <span className="text-[11px] uppercase tracking-wider text-body">{label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Craft Philosophy Quote */}
+        <div className="relative max-w-3xl mx-auto text-center pb-4">
+          <Quote className="w-8 h-8 text-accent/40 mx-auto mb-4" />
+          <blockquote className="font-display italic text-xl sm:text-2xl lg:text-3xl text-heading leading-relaxed tracking-tight">
+            We don&apos;t ship features — we ship systems built to outlast the
+            trend cycle. Precision over noise, restraint over excess,
+            craft over shortcuts.
+          </blockquote>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-accent">
+            — The TAPP Studio
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
