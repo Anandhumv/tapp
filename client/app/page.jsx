@@ -6,53 +6,18 @@ import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import ProductCard from "../components/ProductCard";
 import { db } from "../lib/firebase";
 import {
-  Search,
   Play,
   ArrowRight,
   Cpu,
   Layers,
   Sparkles,
-  Users2,
-  Boxes,
-  Building2,
   ShieldCheck,
-  Timer,
   Compass,
   Award,
   Quote,
   Loader2,
   FolderOpen,
 } from "lucide-react";
-
-const capabilities = [
-  {
-    title: "Bespoke Sourcing",
-    description: "Exotic compute & hardware, sourced directly.",
-    icon: Cpu,
-  },
-  {
-    title: "Systems Integration",
-    description: "End-to-end architecture & firmware execution.",
-    icon: Layers,
-  },
-  {
-    title: "VIP Curation",
-    description: "Priority review & front-page placement.",
-    icon: Sparkles,
-  },
-  {
-    title: "Executive Advisory",
-    description: "Direct lines to investors & enterprise buyers.",
-    icon: Users2,
-  },
-];
-
-const stats = [
-  { label: "Verified Modules", value: "128+", icon: Boxes },
-  { label: "Elite Suppliers", value: "42+", icon: Building2 },
-  { label: "Satisfaction Rate", value: "98%", icon: ShieldCheck },
-  { label: "Curation Review", value: "24H", icon: Timer },
-];
 
 const studioExpertise = [
   {
@@ -155,86 +120,6 @@ export default function Home() {
             </span>
             Watch Tour
           </Link>
-        </div>
-
-        {/* Search and Filter Bar */}
-        <div className="max-w-2xl mx-auto">
-          <div className="relative mb-6">
-            <span className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-body">
-              <Search className="w-4 h-4" />
-            </span>
-            <input
-              type="text"
-              className="w-full pl-11 pr-4 py-3.5 rounded-xl bg-surface border border-line text-sm text-heading placeholder-body focus:outline-none focus:border-line-hover focus:ring-1 focus:ring-accent/50 transition-all shadow-inner"
-            />
-          </div>
-
-          {/* Filter Chips */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <button className="px-4 py-1.5 rounded-full text-xs font-medium bg-gradient-to-r from-accent to-accent-strong text-black shadow-md shadow-accent/10">
-              All Systems
-            </button>
-            {["CleanTech", "AI Hardware", "Robotics", "SaaS", "DevTools"].map(
-              (cat) => (
-                <button
-                  key={cat}
-                  className="px-4 py-1.5 rounded-full text-xs font-medium bg-surface border border-line text-body hover:text-heading hover:border-line-hover transition-all"
-                >
-                  {cat}
-                </button>
-              )
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Ribbon */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-24 py-8 border-y border-line">
-        {stats.map(({ label, value, icon: Icon }) => (
-          <div key={label} className="flex flex-col items-center text-center gap-2">
-            <Icon className="w-4 h-4 text-accent" strokeWidth={1.5} />
-            <span className="font-display text-2xl sm:text-3xl font-bold text-heading">
-              {value}
-            </span>
-            <span className="text-[11px] uppercase tracking-wider text-body">{label}</span>
-          </div>
-        ))}
-      </section>
-
-      {/* Services / Capabilities Bento Grid */}
-      <section id="ecosystem" className="mb-24">
-        <div className="flex items-end justify-between mb-8 border-b border-line pb-4">
-          <div>
-            <span className="text-[11px] uppercase tracking-widest text-accent font-semibold">
-              Ecosystem
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight mt-1 text-heading">
-              Core Capabilities
-            </h2>
-          </div>
-          <Link
-            href="/services"
-            className="text-xs font-semibold text-accent hover:text-accent-strong flex items-center gap-1"
-          >
-            View Services <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {capabilities.map(({ title, description, icon: Icon }) => (
-            <Link
-              key={title}
-              href="/services"
-              className="group relative rounded-2xl bg-surface border border-line hover:border-line-hover p-6 overflow-hidden transition-all duration-300 shadow-sm hover:shadow-xl"
-            >
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-2/3 h-16 bg-accent/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative w-11 h-11 rounded-xl bg-accent/10 border border-line text-accent flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <Icon className="w-5 h-5" strokeWidth={1.5} />
-              </div>
-              <h3 className="relative font-semibold text-heading text-sm mb-1.5">{title}</h3>
-              <p className="relative text-xs text-body leading-relaxed">{description}</p>
-            </Link>
-          ))}
         </div>
       </section>
 
